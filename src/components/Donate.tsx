@@ -1,5 +1,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
 import { Heart, Check } from "lucide-react";
 
 const Donate = () => {
@@ -84,15 +94,74 @@ const Donate = () => {
                 </div>
               </div>
 
-              {/* Donate Button */}
-              <Button variant="donate" size="xl" className="w-full">
-                <Heart className="w-5 h-5 mr-2 fill-current" />
-                Donate ${customAmount || selectedAmount || 0}
-              </Button>
+              {/* Donate Button (opens payment options) */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="donate" size="xl" className="w-full">
+                    <Heart className="w-5 h-5 mr-2 fill-current" />
+                    Donate ${customAmount || selectedAmount || 0}
+                  </Button>
+                </DialogTrigger>
 
-              <p className="text-center text-sm text-muted-foreground mt-4">
-                Secure donation powered by trusted payment processing
-              </p>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Choose a payment method</DialogTitle>
+                    <DialogDescription>
+                      Select one of the options below to complete your donation of ${customAmount || selectedAmount || 0}.
+                    </DialogDescription>
+                  </DialogHeader>
+
+                  <div className="mt-4 grid gap-3">
+                    <a
+                      href={`https://www.paypal.com/donate?amount=${customAmount || selectedAmount || 0}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg border border-border bg-background hover:border-primary transition-colors text-sm font-medium"
+                      aria-label="Donate with PayPal (opens in new tab)"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                        <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M6 9h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      </svg>
+                      PayPal
+                    </a>
+
+                    <a
+                      href={`https://venmo.com/?txn=pay&amount=${customAmount || selectedAmount || 0}&note=Donation`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg border border-border bg-background hover:border-primary transition-colors text-sm font-medium"
+                      aria-label="Donate with Venmo (opens in new tab)"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                        <path d="M4 6h16v12H4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M7 15l3-6 4 6 3-8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      Venmo
+                    </a>
+
+                    <a
+                      href="https://www.apple.com/apple-pay/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg border border-border bg-background hover:border-primary transition-colors text-sm font-medium"
+                      aria-label="Learn about Apple Pay (opens in new tab)"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                        <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M8 15c1-2 3.5-2 4.5-1 1 1 1.5 2.5 1 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      Apple Pay
+                    </a>
+                  </div>
+
+                  <DialogFooter className="mt-4">
+                    <DialogClose asChild>
+                      <Button variant="outline">Close</Button>
+                    </DialogClose>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Impact Info */}

@@ -37,13 +37,13 @@ const Hero = () => {
 
           {/* Main Heading */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 text-balance animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Transition from{" "}
-            <span className="text-primary">the Hearts</span>
+            Transition From{" "}
+            <span className="text-primary">The Hearts</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            Empowering young adults to navigate life's transitions with compassion, 
+            Empowering young adults to navigate life's transitions with compassion,
             guidance, and the unwavering support of a caring community.
           </p>
 
@@ -76,7 +76,7 @@ const Hero = () => {
         </div>
 
         {/* Scroll Indicator */}
-        <button 
+        <button
           onClick={scrollToAbout}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors animate-bounce"
           aria-label="Scroll to learn more"

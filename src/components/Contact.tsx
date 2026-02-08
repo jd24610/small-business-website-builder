@@ -24,17 +24,17 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Our Address",
-      details: ["123 Heart Street", "Community Center, Suite 100", "Your City, ST 12345"],
+      details: ["119 Picasso Court", "Williamstown, New Jersey 08094"],
     },
     {
       icon: Phone,
       title: "Phone",
-      details: ["(555) 123-4567"],
+      details: ["(856)668-07-77"],
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["hello@transitionfromthehearts.org"],
+      details: ["hello@"],
     },
     {
       icon: Clock,
@@ -54,7 +54,7 @@ const Contact = () => {
               Contact Us
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have questions or want to learn more about how you can get involved? 
+              Have questions or want to learn more about how you can get involved?
               We'd love to hear from you.
             </p>
           </div>
@@ -122,7 +122,7 @@ const Contact = () => {
               </h3>
               <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-4">
                 {contactInfo.map((info) => (
-                  <div 
+                  <div
                     key={info.title}
                     className="flex gap-4 p-5 rounded-2xl bg-card shadow-card hover:shadow-soft transition-shadow"
                   >
@@ -141,15 +141,25 @@ const Contact = () => {
                 ))}
               </div>
 
-              {/* Map Placeholder */}
-              <div className="rounded-2xl overflow-hidden bg-secondary h-48 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-8 h-8 text-primary mx-auto mb-2" />
-                  <p className="text-muted-foreground text-sm">
-                    Interactive map coming soon
-                  </p>
+              {/* Interactive Map */}
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=119+Picasso+Court+Williamstown+New+Jersey+08094"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-2xl overflow-hidden bg-secondary h-48 hover:bg-secondary/80 transition-colors group cursor-pointer"
+              >
+                <div className="h-full flex items-center justify-center">
+                  <div className="text-center">
+                    <MapPin className="w-8 h-8 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                    <p className="text-muted-foreground text-sm font-medium">
+                      Click to view on Google Maps
+                    </p>
+                    <p className="text-muted-foreground text-xs mt-1">
+                      119 Picasso Court, Williamstown, NJ
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>

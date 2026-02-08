@@ -62,11 +62,15 @@ const About = () => {
               </p>
             </div>
             <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-secondary to-warm-soft-sage overflow-hidden shadow-soft">
-                <div className="absolute inset-0 flex items-center justify-center">
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-soft">
+                <img 
+                  src="/mentor-helping.png" 
+                  alt="A compassionate mentor providing support and care packages to young adults in a welcoming community setting"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end justify-center">
                   <div className="text-center p-8">
-                    <Heart className="w-20 h-20 text-primary mx-auto mb-4 animate-float" />
-                    <p className="font-display text-2xl font-semibold text-foreground">
+                    <p className="font-display text-2xl font-semibold text-white drop-shadow-lg">
                       "From the heart,<br />for the heart"
                     </p>
                   </div>
