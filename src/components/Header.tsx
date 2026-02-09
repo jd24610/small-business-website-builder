@@ -1,24 +1,47 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Heart } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navLinks = [
-    { href: "#about", label: "About Us" },
-    { href: "#mission", label: "Our Mission" },
-    { href: "#impact", label: "Our Impact" },
-    { href: "#donate", label: "Donate" },
-    { href: "#contact", label: "Contact" },
+    { href: "/#about", label: "About Us" },
+    { href: "/#mission", label: "Our Mission" },
+    { href: "/impact", label: "Our Impact" },
+    { href: "/#donate", label: "Donate" },
+    { href: "/#contact", label: "Contact" },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleNavigation = (href: string) => {
     setIsMenuOpen(false);
+
+    if (href.startsWith("/")) {
+      // Check if it's a hash link on the home page
+      if (href.includes("#")) {
+        const [path, hash] = href.split("#");
+
+        if (location.pathname === path || (path === "/" && location.pathname === "/")) {
+          // Already on the page, just scroll
+          const element = document.querySelector(`#${hash}`);
+          element?.scrollIntoView({ behavior: "smooth" });
+        } else {
+          // Navigate to the page with hash
+          navigate(href);
+          // Slight delay to allow navigation to complete before scrolling
+          // Note: Ideally this would be handled by a useEffect in the target page,
+          // but for simple cases this often works or the user scrolls manually.
+          // A better approach is usually installing react-router-hash-link but we keep it simple here.
+        }
+      } else {
+        // Direct route navigation
+        navigate(href);
+        window.scrollTo(0, 0);
+      }
+    }
   };
 
   return (
@@ -27,11 +50,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a
-            href="#"
+            href="/"
             className="flex items-center gap-2 group"
             onClick={(e) => {
               e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              handleNavigation("/");
             }}
             aria-label="Transition From The Hearts - Return to top"
           >
@@ -47,8 +70,8 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
             {navLinks.map((link) => (
               <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
+                key={link.label}
+                onClick={() => handleNavigation(link.href)}
                 className="text-muted-foreground hover:text-primary transition-colors font-medium"
               >
                 {link.label}
@@ -57,7 +80,7 @@ const Header = () => {
             <Button
               variant="donate"
               size="sm"
-              onClick={() => scrollToSection("#donate")}
+              onClick={() => handleNavigation("/#donate")}
             >
               Donate Now
             </Button>
@@ -80,8 +103,8 @@ const Header = () => {
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
+                  key={link.label}
+                  onClick={() => handleNavigation(link.href)}
                   className="text-left text-muted-foreground hover:text-primary transition-colors font-medium py-2"
                 >
                   {link.label}
@@ -90,7 +113,7 @@ const Header = () => {
               <Button
                 variant="donate"
                 className="mt-2"
-                onClick={() => scrollToSection("#donate")}
+                onClick={() => handleNavigation("/#donate")}
               >
                 Donate Now
               </Button>

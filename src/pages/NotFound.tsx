@@ -57,7 +57,7 @@ const NotFound = () => {
               <a href="/#about" className="text-muted-foreground hover:text-primary transition-colors">
                 About Us
               </a>
-              <a href="/#impact" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="/impact" className="text-muted-foreground hover:text-primary transition-colors">
                 Our Impact
               </a>
               <a href="/#donate" className="text-muted-foreground hover:text-primary transition-colors">
