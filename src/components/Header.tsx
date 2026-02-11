@@ -78,6 +78,14 @@ const Header = () => {
               </button>
             ))}
             <Button
+              variant="default"
+              size="sm"
+              onClick={() => window.open("https://docs.google.com/forms", "_blank")} // TODO: Replace with actual Google Form URL
+              className="hidden md:inline-flex"
+            >
+              Get Help
+            </Button>
+            <Button
               variant="donate"
               size="sm"
               onClick={() => handleNavigation("/#donate")}
@@ -110,6 +118,16 @@ const Header = () => {
                   {link.label}
                 </button>
               ))}
+              <Button
+                variant="default"
+                className="mt-2"
+                onClick={() => {
+                  window.open("https://docs.google.com/forms", "_blank"); // TODO: Replace with actual Google Form URL
+                  setIsMenuOpen(false);
+                }}
+              >
+                Get Help
+              </Button>
               <Button
                 variant="donate"
                 className="mt-2"
