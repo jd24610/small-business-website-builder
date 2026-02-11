@@ -34,7 +34,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      details: ["hello@"],
+      details: ["transitionfromthehearts@transitionfromthehearts.org"],
     },
     {
       icon: Clock,

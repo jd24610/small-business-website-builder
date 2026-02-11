@@ -62,8 +62,8 @@ const Footer = () => {
               <div className="text-sm text-background/70 space-y-2">
                 <p>119 Picasso Court</p>
                 <p>Williamstown, NJ 08094</p>
-                <p className="mt-3">Email: [To be added]</p>
-                <p>Phone: [To be added]</p>
+                <p className="mt-3">Email: transitionfromthehearts@transitionfromthehearts.org</p>
+                <p>Phone: (856)668-07-77</p>
               </div>
             </div>
           </div>
