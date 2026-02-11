@@ -63,7 +63,7 @@ const Footer = () => {
                 <p>119 Picasso Court</p>
                 <p>Williamstown, NJ 08094</p>
                 <p className="mt-3">Email: transitionfromthehearts@transitionfromthehearts.org</p>
-                <p>Phone: (856)668-07-77</p>
+                <p>Phone: +1 (856)668-0777</p>
               </div>
             </div>
           </div>
