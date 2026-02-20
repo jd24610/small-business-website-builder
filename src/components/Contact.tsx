@@ -29,12 +29,12 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+1 (856)668-0777"],
+      details: ["+1(856)668-0777"],
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["transitionfromthehearts@transitionfromthehearts.org"],
+      details: ["youthfurnishings@transitionfromthehearts.org"]
     },
     {
       icon: Clock,
