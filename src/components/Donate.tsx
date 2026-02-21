@@ -16,13 +16,13 @@ const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(50);
   const [customAmount, setCustomAmount] = useState("");
 
-  const amounts = [25, 50, 100, 250];
+  const amounts = [50, 100, 250, 500];
 
   const impactItems = [
-    { amount: 25, impact: "Provides mentorship materials for one young adult" },
-    { amount: 50, impact: "Funds a career counseling session" },
-    { amount: 100, impact: "Supports a month of community programming" },
-    { amount: 250, impact: "Sponsors a young adult's transition program" },
+    { amount: 50, impact: "Home essentials for a young adult" },
+    { amount: 100, impact: "Supports community programming for events" },
+    { amount: 250, impact: "Support for home supplies" },
+    { amount: 500, impact: "Support to furnish a young adult's home" },
   ];
 
   const handleAmountClick = (amount: number) => {
@@ -46,7 +46,7 @@ const Donate = () => {
               Make a Donation
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Your generosity helps us continue supporting young adults through their 
+              Your generosity helps us continue supporting young adults through their
               most challenging transitions. Every contribution makes a difference.
             </p>
           </div>
@@ -64,11 +64,10 @@ const Donate = () => {
                   <button
                     key={amount}
                     onClick={() => handleAmountClick(amount)}
-                    className={`p-4 rounded-xl border-2 transition-all duration-200 font-semibold ${
-                      selectedAmount === amount
-                        ? "border-primary bg-primary/10 text-primary"
-                        : "border-border bg-background hover:border-primary/50 text-foreground"
-                    }`}
+                    className={`p-4 rounded-xl border-2 transition-all duration-200 font-semibold ${selectedAmount === amount
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border bg-background hover:border-primary/50 text-foreground"
+                      }`}
                   >
                     ${amount}
                   </button>
@@ -171,20 +170,17 @@ const Donate = () => {
               </h3>
               <div className="space-y-4">
                 {impactItems.map((item) => (
-                  <div 
+                  <div
                     key={item.amount}
-                    className={`flex items-start gap-4 p-4 rounded-xl transition-all duration-200 ${
-                      selectedAmount === item.amount
-                        ? "bg-primary/10 border-2 border-primary"
-                        : "bg-card border-2 border-transparent"
-                    }`}
+                    className={`flex items-start gap-4 p-4 rounded-xl transition-all duration-200 ${selectedAmount === item.amount
+                      ? "bg-primary/10 border-2 border-primary"
+                      : "bg-card border-2 border-transparent"
+                      }`}
                   >
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                      selectedAmount === item.amount ? "bg-primary" : "bg-secondary"
-                    }`}>
-                      <Check className={`w-4 h-4 ${
-                        selectedAmount === item.amount ? "text-primary-foreground" : "text-secondary-foreground"
-                      }`} />
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${selectedAmount === item.amount ? "bg-primary" : "bg-secondary"
+                      }`}>
+                      <Check className={`w-4 h-4 ${selectedAmount === item.amount ? "text-primary-foreground" : "text-secondary-foreground"
+                        }`} />
                     </div>
                     <div>
                       <div className="font-semibold text-foreground">${item.amount}</div>
