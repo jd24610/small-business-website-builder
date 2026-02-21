@@ -17,7 +17,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen gradient-hero flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundImage: "url('/hero-background.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/50" />
       {/* Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" />
@@ -36,13 +38,13 @@ const Hero = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 text-balance animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 text-balance animate-fade-in" style={{ animationDelay: "0.1s" }}>
             Transition From{" "}
             <span className="text-primary">The Hearts</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 text-balance animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 text-balance animate-fade-in" style={{ animationDelay: "0.2s" }}>
             Empowering young adults to navigate life's transitions with compassion,
             guidance, and the unwavering support of a caring community.
           </p>
@@ -65,15 +67,15 @@ const Hero = () => {
           <div className="grid grid-cols-3 gap-8 mt-16 max-w-xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
             <div className="text-center">
               <div className="font-display text-3xl md:text-4xl font-bold text-primary">500+</div>
-              <div className="text-sm text-muted-foreground mt-1">Lives Touched</div>
+              <div className="text-sm text-white/70 mt-1">Lives Touched</div>
             </div>
             <div className="text-center">
               <div className="font-display text-3xl md:text-4xl font-bold text-primary">4</div>
-              <div className="text-sm text-muted-foreground mt-1">Years of Care</div>
+              <div className="text-sm text-white/70 mt-1">Years of Care</div>
             </div>
             <div className="text-center">
               <div className="font-display text-3xl md:text-4xl font-bold text-primary">100%</div>
-              <div className="text-sm text-muted-foreground mt-1">Heart & Soul</div>
+              <div className="text-sm text-white/70 mt-1">Heart &amp; Soul</div>
             </div>
           </div>
         </div>
