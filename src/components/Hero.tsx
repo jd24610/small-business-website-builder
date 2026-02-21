@@ -49,7 +49,7 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <Button variant="default" size="xl" onClick={() => window.open("https://docs.google.com/forms", "_blank")}> {/* TODO: Replace with actual Google Form URL */}
+            <Button variant="default" size="xl" onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSftALCA74KkLKB5E6DKy3bJgiXKpdODtUaRtGGb5hQCIo1h8A/viewform?usp=publish-editor", "_blank")}>
               Get Help
             </Button>
             <Button variant="warm" size="xl" onClick={scrollToDonate}>

@@ -80,7 +80,7 @@ const Header = () => {
             <Button
               variant="default"
               size="sm"
-              onClick={() => window.open("https://docs.google.com/forms", "_blank")} // TODO: Replace with actual Google Form URL
+              onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSftALCA74KkLKB5E6DKy3bJgiXKpdODtUaRtGGb5hQCIo1h8A/viewform?usp=publish-editor", "_blank")}
               className="hidden md:inline-flex"
             >
               Get Help
@@ -122,7 +122,7 @@ const Header = () => {
                 variant="default"
                 className="mt-2"
                 onClick={() => {
-                  window.open("https://docs.google.com/forms", "_blank"); // TODO: Replace with actual Google Form URL
+                  window.open("https://docs.google.com/forms/d/e/1FAIpQLSftALCA74KkLKB5E6DKy3bJgiXKpdODtUaRtGGb5hQCIo1h8A/viewform?usp=publish-editor", "_blank");
                   setIsMenuOpen(false);
                 }}
               >
