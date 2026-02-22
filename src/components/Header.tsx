@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Heart } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import GetHelpModal from "@/components/GetHelpModal";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,7 +22,7 @@ const Header = () => {
     setIsMenuOpen(false);
 
     if (href.startsWith("/")) {
-      // Check if it's a hash link on the home page
+
       if (href.includes("#")) {
         const [path, hash] = href.split("#");
 
@@ -37,7 +39,7 @@ const Header = () => {
           // A better approach is usually installing react-router-hash-link but we keep it simple here.
         }
       } else {
-        // Direct route navigation
+
         navigate(href);
         window.scrollTo(0, 0);
       }
@@ -45,101 +47,104 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border" role="banner">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <a
-            href="/"
-            className="flex items-center gap-2 group"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavigation("/");
-            }}
-            aria-label="Transition From The Hearts - Return to top"
-          >
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center group-hover:shadow-warm transition-shadow">
-              <Heart className="w-5 h-5 text-primary-foreground fill-current" />
-            </div>
-            <span className="font-display text-lg md:text-xl font-semibold text-foreground">
-              Transition From The Hearts
-            </span>
-          </a>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
-            {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={() => handleNavigation(link.href)}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium"
-              >
-                {link.label}
-              </button>
-            ))}
-            <Button
-              variant="default"
-              size="sm"
-              onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSftALCA74KkLKB5E6DKy3bJgiXKpdODtUaRtGGb5hQCIo1h8A/viewform?usp=publish-editor", "_blank")}
-              className="hidden md:inline-flex"
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border" role="banner">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Logo */}
+            <a
+              href="/"
+              className="flex items-center gap-2 group"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation("/");
+              }}
+              aria-label="Transition From The Hearts - Return to top"
             >
-              Get Help
-            </Button>
-            <Button
-              variant="donate"
-              size="sm"
-              onClick={() => handleNavigation("/#donate")}
-            >
-              Donate Now
-            </Button>
-          </nav>
+              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center group-hover:shadow-warm transition-shadow">
+                <Heart className="w-5 h-5 text-primary-foreground fill-current" />
+              </div>
+              <span className="font-display text-lg md:text-xl font-semibold text-foreground">
+                Transition From The Hearts
+              </span>
+            </a>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-border animate-fade-in">
-            <div className="flex flex-col gap-4">
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
               {navLinks.map((link) => (
                 <button
                   key={link.label}
                   onClick={() => handleNavigation(link.href)}
-                  className="text-left text-muted-foreground hover:text-primary transition-colors font-medium py-2"
+                  className="text-muted-foreground hover:text-primary transition-colors font-medium"
                 >
                   {link.label}
                 </button>
               ))}
               <Button
                 variant="default"
-                className="mt-2"
-                onClick={() => {
-                  window.open("https://docs.google.com/forms/d/e/1FAIpQLSftALCA74KkLKB5E6DKy3bJgiXKpdODtUaRtGGb5hQCIo1h8A/viewform?usp=publish-editor", "_blank");
-                  setIsMenuOpen(false);
-                }}
+                size="sm"
+                onClick={() => setIsHelpModalOpen(true)}
+                className="hidden md:inline-flex"
               >
                 Get Help
               </Button>
               <Button
                 variant="donate"
-                className="mt-2"
+                size="sm"
                 onClick={() => handleNavigation("/#donate")}
               >
                 Donate Now
               </Button>
-            </div>
-          </nav>
-        )}
-      </div>
-    </header>
+            </nav>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2 text-foreground"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          {isMenuOpen && (
+            <nav className="md:hidden py-4 border-t border-border animate-fade-in">
+              <div className="flex flex-col gap-4">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.label}
+                    onClick={() => handleNavigation(link.href)}
+                    className="text-left text-muted-foreground hover:text-primary transition-colors font-medium py-2"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+                <Button
+                  variant="default"
+                  className="mt-2"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsHelpModalOpen(true);
+                  }}
+                >
+                  Get Help
+                </Button>
+                <Button
+                  variant="donate"
+                  className="mt-2"
+                  onClick={() => handleNavigation("/#donate")}
+                >
+                  Donate Now
+                </Button>
+              </div>
+            </nav>
+          )}
+        </div>
+      </header>
+      <GetHelpModal isOpen={isHelpModalOpen} onClose={() => setIsHelpModalOpen(false)} />
+    </>
   );
 };
 
