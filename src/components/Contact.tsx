@@ -34,6 +34,7 @@ const Contact = () => {
         throw new Error("Failed to send");
       }
     } catch {
+      console.log("Failed to send");
       toast({
         title: "Something went wrong",
         description: "Please try again or email us directly at youthfurnishings@transitionfromthehearts.org",
@@ -55,16 +56,14 @@ const Contact = () => {
       title: "Phone",
       details: ["+1(856)668-0777"],
     },
+
+
     {
       icon: Mail,
       title: "Email",
       details: ["youthfurnishings@transitionfromthehearts.org"]
     },
-    {
-      icon: Clock,
-      title: "Office Hours",
-      details: ["Monday - Friday: 9am - 5pm", "Saturday: 10am - 2pm", "Sunday: Closed"],
-    },
+
   ];
 
   return (
