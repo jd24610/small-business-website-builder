@@ -152,6 +152,20 @@ const Donate = () => {
                       </svg>
                       Apple Pay
                     </a>
+                    <a
+                      href="https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-8807"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg border-2 border-primary bg-primary/5 hover:bg-primary/10 transition-colors text-sm font-medium text-primary"
+                      aria-label="Donate with Credit or Debit Card via Zeffy (opens in new tab)"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                        <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M2 10h20" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M6 15h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      </svg>
+                      Credit / Debit Card
+                    </a>
                   </div>
 
                   <DialogFooter className="mt-4">
