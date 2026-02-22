@@ -139,19 +139,7 @@ const Donate = () => {
                       Venmo
                     </a>
 
-                    <a
-                      href="https://www.apple.com/apple-pay/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg border border-border bg-background hover:border-primary transition-colors text-sm font-medium"
-                      aria-label="Learn about Apple Pay (opens in new tab)"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                        <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.5" />
-                        <path d="M8 15c1-2 3.5-2 4.5-1 1 1 1.5 2.5 1 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      Apple Pay
-                    </a>
+
                     <a
                       href="https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-8807"
                       target="_blank"
