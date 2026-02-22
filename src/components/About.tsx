@@ -77,28 +77,40 @@ const About = () => {
           </div>
 
           {/* Values Grid */}
-          <div id="mission">
-            <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground text-center mb-12">
-              Our Core Values
-            </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {values.map((value, index) => (
-                <div
-                  key={value.title}
-                  className="group p-6 rounded-2xl bg-card shadow-card hover:shadow-soft transition-all duration-300 hover:-translate-y-1"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <value.icon className="w-6 h-6 text-primary" />
+          <div
+            id="mission"
+            className="relative rounded-3xl overflow-hidden py-14 px-6"
+            style={{
+              backgroundImage: "url('/core-values-background.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/60 rounded-3xl" />
+            <div className="relative z-10">
+              <h3 className="font-display text-2xl md:text-3xl font-semibold text-white text-center mb-12">
+                Our Core Values
+              </h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {values.map((value, index) => (
+                  <div
+                    key={value.title}
+                    className="group p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-1"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-primary/30 flex items-center justify-center mb-4 group-hover:bg-primary/50 transition-colors">
+                      <value.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="font-display text-lg font-semibold text-white mb-2">
+                      {value.title}
+                    </h4>
+                    <p className="text-sm text-white/80">
+                      {value.description}
+                    </p>
                   </div>
-                  <h4 className="font-display text-lg font-semibold text-foreground mb-2">
-                    {value.title}
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    {value.description}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
