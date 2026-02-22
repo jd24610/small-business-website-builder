@@ -19,10 +19,10 @@ const Donate = () => {
   const amounts = [50, 100, 250, 500];
 
   const impactItems = [
-    { amount: 50, impact: "Home essentials for a young adult" },
-    { amount: 100, impact: "Supports community programming for events" },
-    { amount: 250, impact: "Support for home supplies" },
-    { amount: 500, impact: "Support to furnish a young adult's home" },
+    { amount: 50, impact: "Home essentials for a young adult (e.g., dishes, cutlery, shower curtain)" },
+    { amount: 100, impact: "Supports personal care and comfort items (e.g., comforter, sheets, alarm clock)" },
+    { amount: 250, impact: "Support for home supplies (e.g., dresser, nightstand, kitchen table)" },
+    { amount: 500, impact: "Support to furnish a young adult's home (e.g., bed, sofa, or loveseat)" },
   ];
 
   const handleAmountClick = (amount: number) => {
