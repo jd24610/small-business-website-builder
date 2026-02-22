@@ -66,11 +66,11 @@ const Hero = () => {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 mt-16 max-w-xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
             <div className="text-center">
-              <div className="font-display text-3xl md:text-4xl font-bold text-primary">500+</div>
+              <div className="font-display text-3xl md:text-4xl font-bold text-primary">200+</div>
               <div className="text-sm text-white/70 mt-1">Lives Touched</div>
             </div>
             <div className="text-center">
-              <div className="font-display text-3xl md:text-4xl font-bold text-primary">4</div>
+              <div className="font-display text-3xl md:text-4xl font-bold text-primary">2</div>
               <div className="text-sm text-white/70 mt-1">Years of Care</div>
             </div>
             <div className="text-center">
