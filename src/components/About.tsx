@@ -35,7 +35,7 @@ const About = () => {
               Who We Are
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Transition from the Hearts is a nonprofit organization dedicated to 
+              Transition from the Hearts is a nonprofit organization dedicated to
               supporting young adults during life's most pivotal moments.
             </p>
           </div>
@@ -47,24 +47,19 @@ const About = () => {
                 Our Story
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Founded with a deep belief that every young adult deserves guidance and support, 
-                Transition from the Hearts emerged from a simple truth: the transition to adulthood 
-                can be overwhelming, but no one should face it alone.
+                Transition from the Hearts was founded with a simple yet powerful belief: every young adult aging out of foster care deserves a chance to start their new life with dignity, support, and a furnished home. The transition to independent living can be overwhelming, and our goal is to ensure no young adult faces it without the essential furniture and household items they need.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Our team of dedicated mentors, counselors, and volunteers work tirelessly to 
-                provide resources, mentorship, and a caring community for those navigating 
-                challenges in education, career, housing, and personal growth.
+                Our dedicated team works to provide young adults with the furniture and home essentials that create a safe, comfortable environment where they can thrive. From beds and couches to kitchenware and basic household items, we help make their first homes feel like a true, welcoming space.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                We believe that with the right support, every young person can build a 
-                foundation for a fulfilling and purposeful life.
+                We believe that with the right support, every young person can build a foundation for success and independence as they step into adulthood.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-soft">
-                <img 
-                  src="/mentor-helping.png" 
+                <img
+                  src="/mentor-helping.png"
                   alt="A compassionate mentor providing support and care packages to young adults in a welcoming community setting"
                   className="w-full h-full object-cover"
                 />
@@ -88,7 +83,7 @@ const About = () => {
             </h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => (
-                <div 
+                <div
                   key={value.title}
                   className="group p-6 rounded-2xl bg-card shadow-card hover:shadow-soft transition-all duration-300 hover:-translate-y-1"
                   style={{ animationDelay: `${index * 0.1}s` }}
