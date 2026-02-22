@@ -183,7 +183,7 @@ const TermsOfService = () => {
                             </p>
                             <div className="text-muted-foreground">
                                 <p className="font-semibold text-foreground">Transition From The Hearts</p>
-                                <p>119 Picasso Court</p>
+                                <p>1119 Picasso Court</p>
                                 <p>Williamstown, New Jersey 08094</p>
                                 <p className="mt-2">Email: [Contact email to be added]</p>
                                 <p>Phone: [Contact phone to be added]</p>
