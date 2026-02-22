@@ -16,10 +16,13 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://formspree.io/f/mnjbggnr", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: "4a0954ba-dce4-42f5-ae8f-b76eadb18077",
+          ...formData,
+        }),
       });
       if (response.ok) {
         toast({
