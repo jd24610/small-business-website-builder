@@ -37,7 +37,7 @@ const Contact = () => {
       console.log("Failed to send");
       toast({
         title: "Something went wrong",
-        description: "Please try again or email us directly at youthfurnishings@transitionfromthehearts.org",
+        description: "Please try again or email us directly at info@transitionfromthehearts.org",
         variant: "destructive",
       });
     } finally {
@@ -61,7 +61,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      details: ["youthfurnishings@transitionfromthehearts.org"]
+      details: ["info@transitionfromthehearts.org"]
     },
 
   ];
