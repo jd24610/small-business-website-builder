@@ -185,8 +185,10 @@ const TermsOfService = () => {
                                 <p className="font-semibold text-foreground">Transition From The Hearts</p>
                                 <p>1119 Picasso Court</p>
                                 <p>Williamstown, New Jersey 08094</p>
-                                <p className="mt-2">Email: [Contact email to be added]</p>
-                                <p>Phone: [Contact phone to be added]</p>
+                                <p className="mt-2">Email:{" "}
+                                    <a href="mailto:info@transitionfromthehearts.org" className="text-primary hover:underline">info@transitionfromthehearts.org</a>
+                                </p>
+                                <p>Phone: (856) 668-0777</p>
                             </div>
                         </div>
                     </div>

@@ -154,7 +154,7 @@ const PrivacyPolicy = () => {
                             </ul>
                             <p className="text-muted-foreground leading-relaxed mb-4">
                                 Transition from the Hearts does not collect or use sensitive personal information. To exercise these rights, contact us at{" "}
-                                <a href="mailto:youthfurnishings@transitionfromthehearts.org" className="text-primary hover:underline">youthfurnishings@transitionfromthehearts.org</a>.
+                                <a href="mailto:info@transitionfromthehearts.org" className="text-primary hover:underline">info@transitionfromthehearts.org</a>.
                             </p>
 
                             <h3 className="font-semibold text-foreground mb-2">B. European Union / United Kingdom (GDPR)</h3>
@@ -223,8 +223,8 @@ const PrivacyPolicy = () => {
                                 <p>Williamstown, NJ 08094</p>
                                 <p className="mt-2">
                                     Email:{" "}
-                                    <a href="mailto:youthfurnishings@transitionfromthehearts.org" className="text-primary hover:underline">
-                                        youthfurnishings@transitionfromthehearts.org
+                                    <a href="mailto:info@transitionfromthehearts.org" className="text-primary hover:underline">
+                                        info@transitionfromthehearts.org
                                     </a>
                                 </p>
                                 <p>Phone: (856) 668-0777</p>
