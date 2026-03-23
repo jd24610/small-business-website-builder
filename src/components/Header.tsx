@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Heart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import GetHelpModal from "@/components/GetHelpModal";
 
@@ -50,7 +50,7 @@ const Header = () => {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border" role="banner">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-18 md:h-20">
             {/* Logo */}
             <a
               href="/"
@@ -61,9 +61,11 @@ const Header = () => {
               }}
               aria-label="Transition From The Hearts - Return to top"
             >
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center group-hover:shadow-warm transition-shadow">
-                <Heart className="w-5 h-5 text-primary-foreground fill-current" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="TFTH Logo"
+                className="w-12 h-12 md:w-14 md:h-14 object-contain rounded-full transition-transform group-hover:scale-105"
+              />
               <span className="font-display text-lg md:text-xl font-semibold text-foreground">
                 Transition From The Hearts
               </span>
