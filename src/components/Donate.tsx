@@ -125,20 +125,6 @@ const Donate = () => {
                       PayPal
                     </a>
 
-                    <a
-                      href={`https://venmo.com/?txn=pay&amount=${customAmount || selectedAmount || 0}&note=Donation`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg border border-border bg-background hover:border-primary transition-colors text-sm font-medium"
-                      aria-label="Donate with Venmo (opens in new tab)"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                        <path d="M4 6h16v12H4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M7 15l3-6 4 6 3-8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                      Venmo
-                    </a>
-
 
                     <a
                       href="https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-8807"
