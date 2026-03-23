@@ -112,7 +112,7 @@ const Donate = () => {
 
                   <div className="mt-4 grid gap-3">
                     <a
-                      href={`https://www.paypal.com/donate?amount=${customAmount || selectedAmount || 0}`}
+                      href={`https://www.paypal.me/TFTHorg/${customAmount || selectedAmount || ""}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg border border-border bg-background hover:border-primary transition-colors text-sm font-medium"
