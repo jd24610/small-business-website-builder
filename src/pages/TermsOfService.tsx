@@ -183,7 +183,8 @@ const TermsOfService = () => {
                             </p>
                             <div className="text-muted-foreground">
                                 <p className="font-semibold text-foreground">Transition From The Hearts</p>
-                                <p>1119 Picasso Court</p>
+                                <p>135 South Blackhorse Pike</p>
+                                <p>P.O Box #68</p>
                                 <p>Williamstown, New Jersey 08094</p>
                                 <p className="mt-2">Email:{" "}
                                     <a href="mailto:info@transitionfromthehearts.org" className="text-primary hover:underline">info@transitionfromthehearts.org</a>

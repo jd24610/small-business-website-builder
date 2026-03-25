@@ -219,7 +219,8 @@ const PrivacyPolicy = () => {
                             </p>
                             <div className="text-muted-foreground space-y-1">
                                 <p className="font-semibold text-foreground">Transition from the Hearts, Inc.</p>
-                                <p>1119 Picasso Court</p>
+                                <p>135 South Blackhorse Pike</p>
+                                <p>P.O Box #68</p>
                                 <p>Williamstown, NJ 08094</p>
                                 <p className="mt-2">
                                     Email:{" "}
