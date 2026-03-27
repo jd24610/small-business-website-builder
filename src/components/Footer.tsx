@@ -63,7 +63,7 @@ const Footer = () => {
                 <p>135 South Blackhorse Pike</p>
                 <p>P.O Box #68</p>
                 <p>Williamstown, NJ 08094</p>
-                <p className="mt-3">Email: youthfurnishings@transitionfromthehearts.org</p>
+                <p className="mt-3">Email: info@transitionfromthehearts.org</p>
                 <p>Phone: +1 (856)668-0777</p>
               </div>
             </div>
