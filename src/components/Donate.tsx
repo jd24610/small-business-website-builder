@@ -28,6 +28,11 @@ const Donate = () => {
   const handleAmountClick = (amount: number) => {
     setSelectedAmount(amount);
     setCustomAmount("");
+    setCustomAmount(amount.toString());
+    setSelectedAmount(null);
+    setSelectedAmount(amount);
+    s
+
   };
 
   const handleCustomAmount = (value: string) => {
@@ -127,7 +132,7 @@ const Donate = () => {
 
 
                     <a
-                      href="https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-8807"
+                      href="https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-10031"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg border-2 border-primary bg-primary/5 hover:bg-primary/10 transition-colors text-sm font-medium text-primary"
