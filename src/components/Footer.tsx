@@ -51,7 +51,7 @@ const Footer = () => {
                 <a href="#about" className="hover:text-primary transition-colors">About Us</a>
                 <a href="#mission" className="hover:text-primary transition-colors">Our Mission</a>
                 <a href="/impact" className="hover:text-primary transition-colors">Our Impact</a>
-                <a href="#donate" className="hover:text-primary transition-colors">Donate</a>
+
                 <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
               </nav>
             </div>

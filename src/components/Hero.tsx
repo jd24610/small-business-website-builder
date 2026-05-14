@@ -12,12 +12,6 @@ const Hero = () => {
     }
   };
 
-  const scrollToDonate = () => {
-    const element = document.querySelector("#donate");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <>
@@ -58,10 +52,7 @@ const Hero = () => {
               <Button variant="default" size="xl" onClick={() => setIsHelpModalOpen(true)}>
                 Get Help
               </Button>
-              <Button variant="warm" size="xl" onClick={scrollToDonate}>
-                Make a Difference
-                <Heart className="w-5 h-5 ml-1" />
-              </Button>
+
               <Button variant="warm-outline" size="xl" onClick={scrollToAbout}>
                 Learn Our Story
               </Button>

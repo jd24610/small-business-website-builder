@@ -29,7 +29,7 @@ const Impact = () => {
                             resources, and a caring community to help them thrive.
                         </p>
                         <a
-                            href="/#donate"
+                            href="/#contact"
                             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:shadow-warm transition-all hover:-translate-y-0.5"
                         >
                             <Heart className="w-5 h-5" />

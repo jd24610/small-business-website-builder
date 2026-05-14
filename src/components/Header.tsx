@@ -14,7 +14,6 @@ const Header = () => {
     { href: "/#about", label: "About Us" },
     { href: "/#mission", label: "Our Mission" },
     { href: "/impact", label: "Our Impact" },
-    { href: "/#donate", label: "Donate" },
     { href: "/#contact", label: "Contact" },
   ];
 
@@ -90,13 +89,7 @@ const Header = () => {
               >
                 Get Help
               </Button>
-              <Button
-                variant="donate"
-                size="sm"
-                onClick={() => handleNavigation("/#donate")}
-              >
-                Donate Now
-              </Button>
+
             </nav>
 
             {/* Mobile Menu Button */}
@@ -133,13 +126,7 @@ const Header = () => {
                 >
                   Get Help
                 </Button>
-                <Button
-                  variant="donate"
-                  className="mt-2"
-                  onClick={() => handleNavigation("/#donate")}
-                >
-                  Donate Now
-                </Button>
+
               </div>
             </nav>
           )}
