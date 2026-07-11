@@ -32,7 +32,7 @@ const Hero = () => {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-full mb-8 animate-fade-in">
               <Heart className="w-4 h-4 text-primary fill-current" />
               <span className="text-sm font-medium text-secondary-foreground">
-                Supporting Young Adults Since 2020
+                Supporting Young Adults Since 2024
               </span>
             </div>
 
