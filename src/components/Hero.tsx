@@ -65,7 +65,7 @@ const Hero = () => {
                 <div className="text-sm text-white/70 mt-1">Children in Needs Of Support (per year)</div>
               </div>
               <div className="text-center">
-                <div className="font-display text-3xl md:text-4xl font-bold text-primary">2</div>
+                <div className="font-display text-3xl md:text-4xl font-bold text-primary">6</div>
                 <div className="text-sm text-white/70 mt-1">Years of Care</div>
               </div>
               <div className="text-center">
