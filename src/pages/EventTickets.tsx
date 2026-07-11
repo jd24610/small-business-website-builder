@@ -12,22 +12,18 @@ import {
   Calendar,
   Clock,
   MapPin,
-  Ticket,
   Heart,
   CheckCircle2,
-  Users,
   Star,
   ArrowRight,
   Mail,
   Phone,
   User,
-  Minus,
-  Plus,
 } from "lucide-react";
 import { toast } from "sonner";
 
 /* ---------- Zod schema ---------- */
-const ticketSchema = z
+const galaSchema = z
   .object({
     firstName: z.string().min(2, "First name must be at least 2 characters"),
     lastName: z.string().min(2, "Last name must be at least 2 characters"),
@@ -37,65 +33,69 @@ const ticketSchema = z
       .string()
       .min(10, "Please enter a valid phone number")
       .regex(/^[\d\s\-().+]+$/, "Please enter a valid phone number"),
-    quantity: z.number().min(1).max(10),
   })
   .refine((data) => data.email === data.confirmEmail, {
     message: "Email addresses do not match",
     path: ["confirmEmail"],
   });
 
-type TicketFormData = z.infer<typeof ticketSchema>;
+type GalaFormData = z.infer<typeof galaSchema>;
 
-const TICKET_PRICE = 75;
+const SUGGESTED_AMOUNTS = [50, 75, 100, 250, 500];
+const ZEFFY_BASE_URL =
+  "https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-10031";
 
 const EventTickets = () => {
-  const [quantity, setQuantity] = useState(1);
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(75);
+  const [customAmount, setCustomAmount] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
-
 
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
-  } = useForm<TicketFormData>({
-    resolver: zodResolver(ticketSchema),
-    defaultValues: { quantity: 1 },
-  });
+  } = useForm<GalaFormData>({ resolver: zodResolver(galaSchema) });
 
-  const adjustQuantity = (delta: number) => {
-    const next = Math.max(1, Math.min(10, quantity + delta));
-    setQuantity(next);
-    setValue("quantity", next);
+  const donationAmount =
+    customAmount ? parseFloat(customAmount) : (selectedAmount ?? 0);
+
+  const handleAmountClick = (amount: number) => {
+    setSelectedAmount(amount);
+    setCustomAmount("");
   };
 
-  const ZEFFY_BASE_URL =
-    "https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-10031";
+  const handleCustomAmount = (value: string) => {
+    setCustomAmount(value);
+    setSelectedAmount(null);
+  };
 
-  const onSubmit = async (data: TicketFormData) => {
+  const onSubmit = async (data: GalaFormData) => {
+    if (!donationAmount || donationAmount <= 0) {
+      toast.error("Please choose or enter a donation amount.");
+      return;
+    }
     setIsSubmitting(true);
-    // Small delay for UX feedback, then redirect to Zeffy for real payment
     await new Promise((r) => setTimeout(r, 800));
-    const total = quantity * TICKET_PRICE;
     const params = new URLSearchParams({
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
       phone: data.phone,
-      amount: total.toString(),
-      quantity: quantity.toString(),
+      amount: donationAmount.toString(),
       campaign: "Hearts & Hope Fundraising Gala 2026",
     });
     toast.success(
-      `Redirecting to secure payment for ${quantity} ticket${quantity > 1 ? "s" : ""} — $${total.toFixed(2)}`,
+      `Redirecting to secure donation of $${donationAmount.toFixed(2)} — thank you!`,
       { duration: 4000 }
     );
-    window.open(`${ZEFFY_BASE_URL}?${params.toString()}`, "_blank", "noopener,noreferrer");
+    window.open(
+      `${ZEFFY_BASE_URL}?${params.toString()}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
     setIsSubmitting(false);
   };
-
-  const total = quantity * TICKET_PRICE;
 
   return (
     <div className="min-h-screen bg-background">
@@ -154,8 +154,7 @@ const EventTickets = () => {
             <span
               className="text-transparent bg-clip-text"
               style={{
-                backgroundImage:
-                  "linear-gradient(135deg, #f59e0b, #f97316)",
+                backgroundImage: "linear-gradient(135deg, #f59e0b, #f97316)",
               }}
             >
               Fundraising Gala
@@ -163,8 +162,9 @@ const EventTickets = () => {
           </h1>
 
           <p className="text-white/75 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-            Join us for a transformative evening supporting young adults as
-            they transition from foster care to independent living.
+            Your donation is your seat at the table. Join us for a
+            transformative evening — every contribution directly supports young
+            adults transitioning from foster care to independent living.
           </p>
 
           {/* event pills */}
@@ -193,7 +193,7 @@ const EventTickets = () => {
       <section className="container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-5 gap-12 items-start">
 
-          {/* ── Left: form ── */}
+          {/* ── Left: donation form ── */}
           <div className="lg:col-span-3">
             <div className="bg-card rounded-3xl shadow-card border border-border overflow-hidden">
               {/* form header */}
@@ -212,18 +212,18 @@ const EventTickets = () => {
                         "linear-gradient(135deg, hsl(12 76% 61%), hsl(38 92% 50%))",
                     }}
                   >
-                    <Ticket className="w-5 h-5 text-white" />
+                    <Heart className="w-5 h-5 text-white" />
                   </div>
                   <h2
                     className="text-2xl font-bold text-foreground"
                     style={{ fontFamily: "'Playfair Display', serif" }}
                   >
-                    Reserve Your Seat
+                    Donate &amp; Reserve Your Seat
                   </h2>
                 </div>
                 <p className="text-muted-foreground">
-                  Complete the form below to secure your tickets. A
-                  confirmation will be sent to your email.
+                  Choose your donation amount below — your contribution is your
+                  support for the Gala and our mission.
                 </p>
               </div>
 
@@ -232,6 +232,68 @@ const EventTickets = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="p-8 space-y-6"
               >
+                {/* Donation amount */}
+                <div className="space-y-3">
+                  <Label className="font-semibold text-base flex items-center gap-1.5">
+                    <Heart className="w-3.5 h-3.5 text-primary" />
+                    Choose Your Donation Amount
+                  </Label>
+
+                  {/* Preset amounts */}
+                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                    {SUGGESTED_AMOUNTS.map((amount) => (
+                      <button
+                        key={amount}
+                        type="button"
+                        onClick={() => handleAmountClick(amount)}
+                        className={`py-3 rounded-xl border-2 font-semibold text-sm transition-all duration-200 ${
+                          selectedAmount === amount
+                            ? "border-primary bg-primary/10 text-primary"
+                            : "border-border bg-background hover:border-primary/50 text-foreground"
+                        }`}
+                      >
+                        ${amount}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Custom amount */}
+                  <div className="relative">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground font-medium">
+                      $
+                    </span>
+                    <input
+                      type="number"
+                      min="1"
+                      value={customAmount}
+                      onChange={(e) => handleCustomAmount(e.target.value)}
+                      placeholder="Or enter a custom amount"
+                      className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-border bg-background focus:border-primary focus:outline-none transition-colors text-sm"
+                    />
+                  </div>
+
+                  {/* Live total */}
+                  {donationAmount > 0 && (
+                    <div
+                      className="flex items-center justify-between rounded-xl px-5 py-3"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, hsl(12 76% 61% / 0.08), hsl(38 92% 50% / 0.06))",
+                      }}
+                    >
+                      <span className="text-sm text-muted-foreground font-medium">
+                        Your donation total
+                      </span>
+                      <span className="text-2xl font-bold text-foreground">
+                        ${donationAmount.toFixed(2)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Divider */}
+                <div className="border-t border-border" />
+
                 {/* Name row */}
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -365,84 +427,43 @@ const EventTickets = () => {
                   )}
                 </div>
 
-                {/* Ticket quantity */}
-                <div className="space-y-2">
-                  <Label className="flex items-center gap-1.5 font-semibold">
-                    <Users className="w-3.5 h-3.5 text-primary" />
-                    Number of Tickets
-                  </Label>
-                  <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-3 bg-muted rounded-xl p-1">
-                      <button
-                        type="button"
-                        id="decrease-quantity"
-                        onClick={() => adjustQuantity(-1)}
-                        disabled={quantity <= 1}
-                        className="w-9 h-9 rounded-lg flex items-center justify-center bg-background border border-border hover:bg-primary hover:text-white hover:border-primary disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-                        aria-label="Decrease quantity"
-                      >
-                        <Minus className="w-4 h-4" />
-                      </button>
-                      <span className="w-8 text-center text-lg font-bold text-foreground">
-                        {quantity}
-                      </span>
-                      <button
-                        type="button"
-                        id="increase-quantity"
-                        onClick={() => adjustQuantity(1)}
-                        disabled={quantity >= 10}
-                        className="w-9 h-9 rounded-lg flex items-center justify-center bg-background border border-border hover:bg-primary hover:text-white hover:border-primary disabled:opacity-40 disabled:cursor-not-allowed transition-all"
-                        aria-label="Increase quantity"
-                      >
-                        <Plus className="w-4 h-4" />
-                      </button>
-                    </div>
-                    <span className="text-muted-foreground text-sm">
-                      × $75.00 each
-                    </span>
-                  </div>
-                </div>
-
                 {/* Divider */}
                 <div className="border-t border-border" />
 
-                {/* Total & CTA */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-muted-foreground">Total Due</p>
-                    <p className="text-3xl font-bold text-foreground">
-                      ${total.toFixed(2)}
-                    </p>
-                  </div>
-                  <Button
-                    id="purchase-tickets-btn"
-                    type="submit"
-                    size="lg"
-                    disabled={isSubmitting}
-                    className="gap-2 rounded-xl px-8 text-base font-semibold"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, hsl(12 76% 61%), hsl(15 55% 50%))",
-                    }}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        Processing…
-                      </>
-                    ) : (
-                      <>
-                        Purchase Tickets
-                        <ArrowRight className="w-4 h-4" />
-                      </>
-                    )}
-                  </Button>
-                </div>
+                {/* CTA */}
+                <Button
+                  id="donate-gala-btn"
+                  type="submit"
+                  size="lg"
+                  disabled={isSubmitting || donationAmount <= 0}
+                  className="w-full gap-2 rounded-xl text-base font-semibold py-6"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, hsl(12 76% 61%), hsl(15 55% 50%))",
+                  }}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Processing…
+                    </>
+                  ) : (
+                    <>
+                      <Heart className="w-5 h-5 fill-white/30" />
+                      Donate
+                      {donationAmount > 0
+                        ? ` $${donationAmount.toFixed(2)}`
+                        : ""}{" "}
+                      &amp; Reserve My Seat
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
+                </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
                   🔒 Secure payment powered by{" "}
-                  <strong>Zeffy</strong> — 100% of your ticket purchase goes
-                  directly to our mission.
+                  <strong>Zeffy</strong> — 100% of your donation goes directly
+                  to our mission.
                 </p>
 
                 {/* Donate alternative */}
@@ -474,7 +495,7 @@ const EventTickets = () => {
 
           {/* ── Right: sidebar ── */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Ticket card */}
+            {/* Donation impact card */}
             <div
               className="rounded-3xl overflow-hidden shadow-warm"
               style={{
@@ -491,58 +512,26 @@ const EventTickets = () => {
                 }}
               />
               <div className="p-7 space-y-5">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-white/60 text-xs uppercase tracking-widest mb-1">
-                      Ticket Price
-                    </p>
-                    <p className="text-5xl font-bold text-white">$75</p>
-                    <p className="text-white/50 text-sm">per person</p>
-                  </div>
-                  <div
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, hsl(12 76% 61% / 0.3), hsl(38 92% 50% / 0.2))",
-                    }}
-                  >
-                    <Heart className="w-8 h-8 text-amber-400 fill-amber-400/30" />
-                  </div>
-                </div>
-
-                <div className="border-t border-white/10" />
-
-                <div className="space-y-4">
-                  {[
-                    {
-                      icon: Calendar,
-                      label: "Date",
-                      value: "Saturday, October 10, 2026",
-                    },
-                    { icon: Clock, label: "Time", value: "5:00 PM" },
-                    {
-                      icon: MapPin,
-                      label: "Venue",
-                      value: "Pfeiffer Community Center",
-                    },
-                    {
-                      icon: MapPin,
-                      label: "Address",
-                      value: "301 Blue Bell Rd, Williamstown, NJ 08094",
-                    },
-                  ].map(({ icon: Icon, label, value }) => (
-                    <div key={label} className="flex gap-3">
-                      <Icon className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                      <div>
-                        <p className="text-white/50 text-xs uppercase tracking-wider">
-                          {label}
-                        </p>
-                        <p className="text-white font-medium text-sm">
-                          {value}
-                        </p>
+                <div>
+                  <p className="text-white/60 text-xs uppercase tracking-widest mb-2">
+                    Your Donation Impact
+                  </p>
+                  <div className="space-y-3">
+                    {[
+                      { amount: "$50", impact: "Home essentials (dishes, cutlery, shower curtain)" },
+                      { amount: "$75", impact: "Personal care & comfort items (comforter, sheets)" },
+                      { amount: "$100", impact: "Kitchen & bedroom basics (alarm clock, towels)" },
+                      { amount: "$250", impact: "Furniture support (dresser, nightstand, table)" },
+                      { amount: "$500", impact: "Furnish a full home (bed, sofa, or loveseat)" },
+                    ].map(({ amount, impact }) => (
+                      <div key={amount} className="flex gap-3">
+                        <span className="text-amber-400 font-bold text-sm w-12 shrink-0">
+                          {amount}
+                        </span>
+                        <p className="text-white/70 text-sm">{impact}</p>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
 
                 {/* tear line */}
@@ -552,7 +541,26 @@ const EventTickets = () => {
                   <div className="absolute -right-7 w-5 h-5 rounded-full bg-background" />
                 </div>
 
-                <div className="text-center">
+                <div className="space-y-3">
+                  {[
+                    { icon: Calendar, label: "Date", value: "Saturday, October 10, 2026" },
+                    { icon: Clock, label: "Time", value: "5:00 PM" },
+                    { icon: MapPin, label: "Venue", value: "Pfeiffer Community Center" },
+                    { icon: MapPin, label: "Address", value: "301 Blue Bell Rd, Williamstown, NJ 08094" },
+                  ].map(({ icon: Icon, label, value }) => (
+                    <div key={label} className="flex gap-3">
+                      <Icon className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                      <div>
+                        <p className="text-white/50 text-xs uppercase tracking-wider">
+                          {label}
+                        </p>
+                        <p className="text-white font-medium text-sm">{value}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="text-center pt-2">
                   <p className="text-white/40 text-xs uppercase tracking-widest">
                     Transition From The Hearts
                   </p>
@@ -602,19 +610,17 @@ const EventTickets = () => {
               <Heart className="w-6 h-6 text-primary mb-3" />
               <p className="text-sm text-muted-foreground leading-relaxed">
                 <strong className="text-foreground">
-                  Every ticket matters.
+                  Your donation is your ticket.
                 </strong>{" "}
-                Your attendance directly supports our mission to provide
-                essential household furnishings to young adults aging out of
-                the foster care system — helping them begin their next chapter
-                with <em>dignity, stability, and hope.</em>
+                Every dollar goes directly toward providing essential household
+                furnishings to young adults aging out of the foster care system
+                — helping them begin their next chapter with{" "}
+                <em>dignity, stability, and hope.</em>
               </p>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Zeffy handles payment — no local confirmation modal needed */}
 
       <Footer />
     </div>

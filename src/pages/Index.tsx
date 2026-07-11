@@ -9,7 +9,6 @@ import {
   Calendar,
   Clock,
   MapPin,
-  Ticket,
   Star,
   ArrowRight,
   Heart,
@@ -89,8 +88,8 @@ const EventBanner = () => {
             <p className="text-white/75 text-lg leading-relaxed mb-8">
               Join us for an elegant evening supporting young adults as they
               transition from foster care to independent living. Fine dining,
-              live entertainment, and a silent auction — every ticket makes a
-              real difference.
+              live entertainment, and a silent auction —{" "}
+              <strong className="text-white">your donation is your seat.</strong>
             </p>
 
             {/* Event details pills */}
@@ -124,14 +123,14 @@ const EventBanner = () => {
                     "linear-gradient(135deg, hsl(12 76% 61%), hsl(38 92% 50%))",
                 }}
               >
-                <Ticket className="w-5 h-5" />
-                Gala - Buy Tickets
+                <Heart className="w-5 h-5" />
+                Donate &amp; Attend the Gala
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
 
             <p className="text-white/40 text-xs mt-4">
-              🔒 Secure payment via Zeffy — 100% goes to our mission
+              🔒 Secure donation via Zeffy — 100% goes to our mission
             </p>
           </div>
 
@@ -156,10 +155,10 @@ const EventBanner = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-white/60 text-xs uppercase tracking-widest mb-1">
-                      Ticket Price
+                      Donate to Attend
                     </p>
-                    <p className="text-5xl font-bold text-white">$75</p>
-                    <p className="text-white/50 text-sm">per person</p>
+                    <p className="text-3xl font-bold text-white">Any Amount</p>
+                    <p className="text-white/50 text-sm">your donation = your seat</p>
                   </div>
                   <div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center"
