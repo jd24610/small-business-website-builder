@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -50,6 +51,8 @@ const TICKET_PRICE = 75;
 const EventTickets = () => {
   const [quantity, setQuantity] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
+
 
   const {
     register,
@@ -441,6 +444,30 @@ const EventTickets = () => {
                   <strong>Zeffy</strong> — 100% of your ticket purchase goes
                   directly to our mission.
                 </p>
+
+                {/* Donate alternative */}
+                <div className="relative flex items-center gap-3">
+                  <div className="flex-1 border-t border-border" />
+                  <span className="text-xs text-muted-foreground font-medium uppercase tracking-widest">
+                    or
+                  </span>
+                  <div className="flex-1 border-t border-border" />
+                </div>
+
+                <div className="text-center space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    Not attending but still want to help?
+                  </p>
+                  <button
+                    type="button"
+                    id="goto-donate-btn"
+                    onClick={() => navigate("/#donate")}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 underline underline-offset-4 transition-colors"
+                  >
+                    <Heart className="w-4 h-4 fill-current" />
+                    Make a Donation Instead
+                  </button>
+                </div>
               </form>
             </div>
           </div>

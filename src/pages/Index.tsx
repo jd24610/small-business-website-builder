@@ -125,7 +125,7 @@ const EventBanner = () => {
                 }}
               >
                 <Ticket className="w-5 h-5" />
-                Buy Tickets — $75
+                Gala - Buy Tickets
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
