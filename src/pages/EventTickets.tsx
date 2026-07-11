@@ -190,7 +190,12 @@ const EventTickets = () => {
       </section>
 
       {/* ───── Main content ───── */}
-      <section className="container mx-auto px-4 py-16">
+      <div
+        style={{
+          background: "linear-gradient(180deg, hsl(35 60% 95%) 0%, hsl(30 50% 98%) 100%)",
+        }}
+      >
+        <section className="container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-5 gap-12 items-start">
 
           {/* ── Left: donation form ── */}
@@ -592,7 +597,7 @@ const EventTickets = () => {
                     key={item}
                     className="flex items-start gap-2.5 text-sm text-muted-foreground"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
@@ -620,7 +625,8 @@ const EventTickets = () => {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      </div>
 
       <Footer />
     </div>
