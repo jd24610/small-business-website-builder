@@ -104,72 +104,53 @@ const EventTickets = () => {
       {/* ───── Hero card ───── */}
       <section className="bg-white pt-24 pb-0 px-4 md:px-8">
         <div
-          className="max-w-7xl mx-auto rounded-3xl relative overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(135deg, hsl(20 35% 10%) 0%, hsl(15 40% 16%) 40%, hsl(38 50% 18%) 100%)",
-          }}
+          className="max-w-4xl mx-auto rounded-3xl relative overflow-hidden bg-[hsl(35,60%,95%)] border border-border/50"
         >
           {/* decorative circles */}
           <div
             aria-hidden="true"
-            className="absolute -top-20 -right-20 w-96 h-96 rounded-full opacity-20"
+            className="absolute -top-20 -right-20 w-96 h-96 rounded-full opacity-30"
             style={{
               background:
-                "radial-gradient(circle, hsl(38 92% 50%) 0%, transparent 70%)",
+                "radial-gradient(circle, hsl(38 92% 50% / 0.3) 0%, transparent 70%)",
             }}
           />
           <div
             aria-hidden="true"
-            className="absolute bottom-0 -left-24 w-80 h-80 rounded-full opacity-10"
+            className="absolute bottom-0 -left-24 w-80 h-80 rounded-full opacity-30"
             style={{
               background:
-                "radial-gradient(circle, hsl(12 76% 61%) 0%, transparent 70%)",
-            }}
-          />
-          {/* floating dots pattern */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 opacity-5"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, white 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
+                "radial-gradient(circle, hsl(12 76% 61% / 0.2) 0%, transparent 70%)",
             }}
           />
 
-          <div className="relative z-10 px-8 md:px-16 py-16">
+          <div className="relative z-10 px-8 py-12 md:py-16 flex flex-col items-center text-center">
             {/* badge */}
-            <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-400/30 rounded-full px-4 py-1.5 mb-6">
-              <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-              <span className="text-amber-300 text-sm font-semibold tracking-wide uppercase">
+            <div className="inline-flex items-center gap-2 bg-white/60 border border-black/5 rounded-full px-4 py-1.5 mb-6 shadow-sm">
+              <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+              <span className="text-foreground/80 text-sm font-semibold tracking-wide uppercase">
                 An Evening of Fine Dining &amp; Purpose
               </span>
             </div>
 
             <h1
-              className="text-5xl md:text-7xl font-bold text-white leading-tight mb-4 max-w-4xl"
+              className="text-4xl md:text-6xl font-bold text-foreground leading-tight mb-4 max-w-3xl"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Hearts &amp; Hope{" "}
-              <span
-                className="text-transparent bg-clip-text"
-                style={{
-                  backgroundImage: "linear-gradient(135deg, #f59e0b, #f97316)",
-                }}
-              >
+              <span className="text-primary">
                 Fundraising Gala
               </span>
             </h1>
 
-            <p className="text-white/75 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+            <p className="text-muted-foreground text-lg max-w-2xl mb-10 leading-relaxed">
               Your donation is your seat at the table. Join us for a
               transformative evening — every contribution directly supports young
               adults transitioning from foster care to independent living.
             </p>
 
             {/* event pills */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap justify-center gap-3">
               {[
                 { icon: Calendar, text: "Saturday, October 10, 2026" },
                 { icon: Clock, text: "5:00 PM" },
@@ -180,10 +161,10 @@ const EventTickets = () => {
               ].map(({ icon: Icon, text }) => (
                 <div
                   key={text}
-                  className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2"
+                  className="flex items-center gap-2 bg-white/80 border border-black/5 shadow-sm rounded-full px-4 py-2"
                 >
-                  <Icon className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span className="text-white text-sm font-medium">{text}</span>
+                  <Icon className="w-4 h-4 text-primary shrink-0" />
+                  <span className="text-foreground/90 text-sm font-medium">{text}</span>
                 </div>
               ))}
             </div>

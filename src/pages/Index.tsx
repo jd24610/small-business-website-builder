@@ -21,27 +21,23 @@ const EventBanner = () => {
   return (
     <section id="event" className="bg-white py-10 px-4 md:px-8">
       <div
-        className="max-w-7xl mx-auto rounded-3xl relative overflow-hidden py-20 md:py-28 px-8 md:px-16"
-        style={{
-          background:
-            "linear-gradient(135deg, hsl(20 35% 10%) 0%, hsl(15 40% 16%) 50%, hsl(38 50% 18%) 100%)",
-        }}
+        className="max-w-5xl mx-auto rounded-3xl relative overflow-hidden py-16 md:py-20 px-8 md:px-12 bg-[hsl(35,60%,95%)] border border-border/50"
       >
       {/* Decorative glow blobs */}
       <div
         aria-hidden="true"
-        className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20 pointer-events-none"
+        className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-30 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, hsl(38 92% 50%) 0%, transparent 70%)",
+            "radial-gradient(circle, hsl(38 92% 50% / 0.3) 0%, transparent 70%)",
         }}
       />
       <div
         aria-hidden="true"
-        className="absolute bottom-0 -left-24 w-80 h-80 rounded-full opacity-10 pointer-events-none"
+        className="absolute bottom-0 -left-24 w-80 h-80 rounded-full opacity-30 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, hsl(12 76% 61%) 0%, transparent 70%)",
+            "radial-gradient(circle, hsl(12 76% 61% / 0.2) 0%, transparent 70%)",
         }}
       />
       {/* Dot pattern */}
@@ -58,9 +54,9 @@ const EventBanner = () => {
       <div className="relative z-10">
         {/* Badge */}
         <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-400/30 rounded-full px-4 py-1.5">
-            <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-            <span className="text-amber-300 text-sm font-semibold tracking-wide uppercase">
+          <div className="inline-flex items-center gap-2 bg-white/60 border border-black/5 shadow-sm rounded-full px-4 py-1.5">
+            <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+            <span className="text-foreground/80 text-sm font-semibold tracking-wide uppercase">
               Upcoming Fundraising Event
             </span>
           </div>
@@ -70,26 +66,20 @@ const EventBanner = () => {
           {/* Left — copy */}
           <div>
             <h2
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-4"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Hearts &amp; Hope{" "}
-              <span
-                className="text-transparent bg-clip-text"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(135deg, #f59e0b, #f97316)",
-                }}
-              >
+              <span className="text-primary">
                 Fundraising Gala
               </span>
             </h2>
 
-            <p className="text-white/75 text-lg leading-relaxed mb-8">
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
               Join us for an elegant evening supporting young adults as they
               transition from foster care to independent living. Fine dining,
               live entertainment, and a silent auction —{" "}
-              <strong className="text-white">your donation is your seat.</strong>
+              <strong className="text-foreground">your donation is your seat.</strong>
             </p>
 
             {/* Event details pills */}
@@ -104,10 +94,10 @@ const EventBanner = () => {
               ].map(({ icon: Icon, text }) => (
                 <div
                   key={text}
-                  className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2"
+                  className="flex items-center gap-2 bg-white/80 border border-black/5 shadow-sm rounded-full px-4 py-2"
                 >
-                  <Icon className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span className="text-white text-sm font-medium">{text}</span>
+                  <Icon className="w-4 h-4 text-primary shrink-0" />
+                  <span className="text-foreground/90 text-sm font-medium">{text}</span>
                 </div>
               ))}
             </div>
@@ -129,7 +119,7 @@ const EventBanner = () => {
               </Button>
             </div>
 
-            <p className="text-white/40 text-xs mt-4">
+            <p className="text-muted-foreground/60 text-xs mt-4">
               🔒 Secure donation via Zeffy — 100% goes to our mission
             </p>
           </div>
