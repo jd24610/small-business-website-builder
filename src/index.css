@@ -6,14 +6,14 @@
 
 @layer base {
   :root {
-    /* Warm, inviting palette */
-    --background: 30 50% 98%;
+    /* Clean white base */
+    --background: 0 0% 100%;
     --foreground: 20 25% 20%;
 
-    --card: 30 40% 96%;
+    --card: 0 0% 98%;
     --card-foreground: 20 25% 20%;
 
-    --popover: 30 50% 98%;
+    --popover: 0 0% 100%;
     --popover-foreground: 20 25% 20%;
 
     /* Warm coral primary */

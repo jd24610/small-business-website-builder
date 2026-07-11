@@ -19,14 +19,14 @@ const EventBanner = () => {
   const navigate = useNavigate();
 
   return (
-    <section
-      id="event"
-      className="py-20 md:py-28 relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(135deg, hsl(20 35% 10%) 0%, hsl(15 40% 16%) 50%, hsl(38 50% 18%) 100%)",
-      }}
-    >
+    <section id="event" className="bg-white py-10 px-4 md:px-8">
+      <div
+        className="max-w-7xl mx-auto rounded-3xl relative overflow-hidden py-20 md:py-28 px-8 md:px-16"
+        style={{
+          background:
+            "linear-gradient(135deg, hsl(20 35% 10%) 0%, hsl(15 40% 16%) 50%, hsl(38 50% 18%) 100%)",
+        }}
+      >
       {/* Decorative glow blobs */}
       <div
         aria-hidden="true"
@@ -55,7 +55,7 @@ const EventBanner = () => {
         }}
       />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="relative z-10">
         {/* Badge */}
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-400/30 rounded-full px-4 py-1.5">
@@ -207,6 +207,7 @@ const EventBanner = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

@@ -101,102 +101,100 @@ const EventTickets = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* ───── Hero ───── */}
-      <section
-        className="relative min-h-[72vh] flex items-center overflow-hidden pt-20"
-        style={{
-          background:
-            "linear-gradient(135deg, hsl(20 35% 10%) 0%, hsl(15 40% 16%) 40%, hsl(38 50% 18%) 100%)",
-        }}
-      >
-        {/* decorative circles */}
+      {/* ───── Hero card ───── */}
+      <section className="bg-white pt-24 pb-0 px-4 md:px-8">
         <div
-          aria-hidden="true"
-          className="absolute -top-20 -right-20 w-96 h-96 rounded-full opacity-20"
+          className="max-w-7xl mx-auto rounded-3xl relative overflow-hidden"
           style={{
             background:
-              "radial-gradient(circle, hsl(38 92% 50%) 0%, transparent 70%)",
+              "linear-gradient(135deg, hsl(20 35% 10%) 0%, hsl(15 40% 16%) 40%, hsl(38 50% 18%) 100%)",
           }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 -left-24 w-80 h-80 rounded-full opacity-10"
-          style={{
-            background:
-              "radial-gradient(circle, hsl(12 76% 61%) 0%, transparent 70%)",
-          }}
-        />
-        {/* floating dots pattern */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, white 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
+        >
+          {/* decorative circles */}
+          <div
+            aria-hidden="true"
+            className="absolute -top-20 -right-20 w-96 h-96 rounded-full opacity-20"
+            style={{
+              background:
+                "radial-gradient(circle, hsl(38 92% 50%) 0%, transparent 70%)",
+            }}
+          />
+          <div
+            aria-hidden="true"
+            className="absolute bottom-0 -left-24 w-80 h-80 rounded-full opacity-10"
+            style={{
+              background:
+                "radial-gradient(circle, hsl(12 76% 61%) 0%, transparent 70%)",
+            }}
+          />
+          {/* floating dots pattern */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, white 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
+            }}
+          />
 
-        <div className="relative z-10 container mx-auto px-4 py-20">
-          {/* badge */}
-          <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-400/30 rounded-full px-4 py-1.5 mb-6">
-            <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
-            <span className="text-amber-300 text-sm font-semibold tracking-wide uppercase">
-              An Evening of Fine Dining &amp; Purpose
-            </span>
-          </div>
+          <div className="relative z-10 px-8 md:px-16 py-16">
+            {/* badge */}
+            <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-400/30 rounded-full px-4 py-1.5 mb-6">
+              <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
+              <span className="text-amber-300 text-sm font-semibold tracking-wide uppercase">
+                An Evening of Fine Dining &amp; Purpose
+              </span>
+            </div>
 
-          <h1
-            className="text-5xl md:text-7xl font-bold text-white leading-tight mb-4 max-w-4xl"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            Hearts &amp; Hope{" "}
-            <span
-              className="text-transparent bg-clip-text"
-              style={{
-                backgroundImage: "linear-gradient(135deg, #f59e0b, #f97316)",
-              }}
+            <h1
+              className="text-5xl md:text-7xl font-bold text-white leading-tight mb-4 max-w-4xl"
+              style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Fundraising Gala
-            </span>
-          </h1>
-
-          <p className="text-white/75 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-            Your donation is your seat at the table. Join us for a
-            transformative evening — every contribution directly supports young
-            adults transitioning from foster care to independent living.
-          </p>
-
-          {/* event pills */}
-          <div className="flex flex-wrap gap-3">
-            {[
-              { icon: Calendar, text: "Saturday, October 10, 2026" },
-              { icon: Clock, text: "5:00 PM" },
-              {
-                icon: MapPin,
-                text: "Pfeiffer Community Center · Williamstown, NJ",
-              },
-            ].map(({ icon: Icon, text }) => (
-              <div
-                key={text}
-                className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2"
+              Hearts &amp; Hope{" "}
+              <span
+                className="text-transparent bg-clip-text"
+                style={{
+                  backgroundImage: "linear-gradient(135deg, #f59e0b, #f97316)",
+                }}
               >
-                <Icon className="w-4 h-4 text-amber-400 shrink-0" />
-                <span className="text-white text-sm font-medium">{text}</span>
-              </div>
-            ))}
+                Fundraising Gala
+              </span>
+            </h1>
+
+            <p className="text-white/75 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+              Your donation is your seat at the table. Join us for a
+              transformative evening — every contribution directly supports young
+              adults transitioning from foster care to independent living.
+            </p>
+
+            {/* event pills */}
+            <div className="flex flex-wrap gap-3">
+              {[
+                { icon: Calendar, text: "Saturday, October 10, 2026" },
+                { icon: Clock, text: "5:00 PM" },
+                {
+                  icon: MapPin,
+                  text: "Pfeiffer Community Center · Williamstown, NJ",
+                },
+              ].map(({ icon: Icon, text }) => (
+                <div
+                  key={text}
+                  className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-2"
+                >
+                  <Icon className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span className="text-white text-sm font-medium">{text}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* ───── Main content ───── */}
-      <div
-        style={{
-          background: "linear-gradient(180deg, hsl(35 60% 95%) 0%, hsl(30 50% 98%) 100%)",
-        }}
-      >
-        <section className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-5 gap-12 items-start">
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
+          <div className="grid lg:grid-cols-5 gap-12 items-start">
 
           {/* ── Left: donation form ── */}
           <div className="lg:col-span-3">
@@ -623,10 +621,10 @@ const EventTickets = () => {
                 <em>dignity, stability, and hope.</em>
               </p>
             </div>
+            </div>
           </div>
         </div>
-        </section>
-      </div>
+      </section>
 
       <Footer />
     </div>

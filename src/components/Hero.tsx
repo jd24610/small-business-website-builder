@@ -15,7 +15,8 @@ const Hero = () => {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundImage: "url('/hero-background.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <section className="bg-white pt-24 pb-0 px-4 md:px-8">
+        <div className="max-w-7xl mx-auto rounded-3xl relative min-h-[85vh] flex items-center justify-center overflow-hidden" style={{ backgroundImage: "url('/hero-background.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/50" />
         {/* Decorative Elements */}
@@ -83,6 +84,7 @@ const Hero = () => {
           >
             <ArrowDown className="w-6 h-6" />
           </button>
+        </div>
         </div>
       </section>
       <GetHelpModal isOpen={isHelpModalOpen} onClose={() => setIsHelpModalOpen(false)} />
