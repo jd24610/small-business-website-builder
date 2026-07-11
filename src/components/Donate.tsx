@@ -27,13 +27,9 @@ const Donate = () => {
 
   const handleAmountClick = (amount: number) => {
     setSelectedAmount(amount);
-    setCustomAmount("");
     setCustomAmount(amount.toString());
-    setSelectedAmount(null);
-    setSelectedAmount(amount);
-    s
-
   };
+
 
   const handleCustomAmount = (value: string) => {
     setCustomAmount(value);

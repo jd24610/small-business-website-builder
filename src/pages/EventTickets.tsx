@@ -8,12 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
   Calendar,
   Clock,
   MapPin,
@@ -55,15 +49,12 @@ const TICKET_PRICE = 75;
 
 const EventTickets = () => {
   const [quantity, setQuantity] = useState(1);
-  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
-  const [submittedData, setSubmittedData] = useState<TicketFormData | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const {
     register,
     handleSubmit,
     setValue,
-    reset,
     formState: { errors },
   } = useForm<TicketFormData>({
     resolver: zodResolver(ticketSchema),
@@ -76,23 +67,29 @@ const EventTickets = () => {
     setValue("quantity", next);
   };
 
+  const ZEFFY_BASE_URL =
+    "https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-10031";
+
   const onSubmit = async (data: TicketFormData) => {
     setIsSubmitting(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setSubmittedData({ ...data, quantity });
-    setIsSubmitting(false);
-    setIsConfirmOpen(true);
-  };
-
-  const handleClose = () => {
-    setIsConfirmOpen(false);
-    reset();
-    setQuantity(1);
+    // Small delay for UX feedback, then redirect to Zeffy for real payment
+    await new Promise((r) => setTimeout(r, 800));
+    const total = quantity * TICKET_PRICE;
+    const params = new URLSearchParams({
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phone: data.phone,
+      amount: total.toString(),
+      quantity: quantity.toString(),
+      campaign: "Hearts & Hope Fundraising Gala 2026",
+    });
     toast.success(
-      "Check your inbox! Your ticket confirmation has been sent.",
-      { duration: 5000 }
+      `Redirecting to secure payment for ${quantity} ticket${quantity > 1 ? "s" : ""} — $${total.toFixed(2)}`,
+      { duration: 4000 }
     );
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.open(`${ZEFFY_BASE_URL}?${params.toString()}`, "_blank", "noopener,noreferrer");
+    setIsSubmitting(false);
   };
 
   const total = quantity * TICKET_PRICE;
@@ -440,8 +437,9 @@ const EventTickets = () => {
                 </div>
 
                 <p className="text-xs text-muted-foreground text-center">
-                  🔒 Your information is secure. A confirmation email with
-                  event details will be sent immediately after purchase.
+                  🔒 Secure payment powered by{" "}
+                  <strong>Zeffy</strong> — 100% of your ticket purchase goes
+                  directly to our mission.
                 </p>
               </form>
             </div>
@@ -589,96 +587,7 @@ const EventTickets = () => {
         </div>
       </section>
 
-      {/* ───── Confirmation Modal ───── */}
-      <Dialog open={isConfirmOpen} onOpenChange={setIsConfirmOpen}>
-        <DialogContent
-          className="max-w-md rounded-3xl p-0 overflow-hidden"
-          aria-describedby="confirmation-desc"
-        >
-          <div
-            className="h-2"
-            style={{
-              background:
-                "linear-gradient(90deg, hsl(12 76% 61%), hsl(38 92% 50%))",
-            }}
-          />
-          <div className="p-8">
-            <DialogHeader>
-              <div className="flex justify-center mb-4">
-                <div
-                  className="w-20 h-20 rounded-full flex items-center justify-center"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, hsl(142 71% 45% / 0.15), hsl(142 71% 45% / 0.05))",
-                  }}
-                >
-                  <CheckCircle2 className="w-10 h-10 text-green-500" />
-                </div>
-              </div>
-              <DialogTitle
-                className="text-center text-2xl font-bold"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                You're Going!
-              </DialogTitle>
-            </DialogHeader>
-
-            <p
-              id="confirmation-desc"
-              className="text-center text-muted-foreground mt-2 mb-6"
-            >
-              Your ticket reservation is confirmed. A confirmation email has
-              been sent to{" "}
-              <strong className="text-foreground">
-                {submittedData?.email}
-              </strong>
-              .
-            </p>
-
-            <div className="bg-muted rounded-2xl p-5 space-y-3 mb-6">
-              {[
-                {
-                  label: "Name",
-                  value: `${submittedData?.firstName} ${submittedData?.lastName}`,
-                },
-                {
-                  label: "Tickets",
-                  value: `${submittedData?.quantity} × $75.00`,
-                },
-                {
-                  label: "Total",
-                  value: `$${((submittedData?.quantity ?? 0) * TICKET_PRICE).toFixed(2)}`,
-                },
-                { label: "Date", value: "Saturday, October 10, 2026" },
-                { label: "Time", value: "5:00 PM" },
-                {
-                  label: "Location",
-                  value: "301 Blue Bell Rd, Williamstown, NJ 08094",
-                },
-              ].map(({ label, value }) => (
-                <div key={label} className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">{label}</span>
-                  <span className="font-semibold text-foreground text-right max-w-[60%]">
-                    {value}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <Button
-              id="close-confirmation-btn"
-              onClick={handleClose}
-              className="w-full rounded-xl py-3 font-semibold"
-              style={{
-                background:
-                  "linear-gradient(135deg, hsl(12 76% 61%), hsl(15 55% 50%))",
-              }}
-            >
-              Done — See You There! 🎉
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      {/* Zeffy handles payment — no local confirmation modal needed */}
 
       <Footer />
     </div>
