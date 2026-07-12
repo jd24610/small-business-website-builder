@@ -19,6 +19,7 @@ import {
   Mail,
   Phone,
   User,
+  Ticket,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -41,13 +42,12 @@ const galaSchema = z
 
 type GalaFormData = z.infer<typeof galaSchema>;
 
-const SUGGESTED_AMOUNTS = [50, 75, 100, 250, 500];
-const ZEFFY_BASE_URL =
+const ZEFFY_TICKET_URL =
+  "https://www.zeffy.com/en-US/ticketing/hearts-hope-fundraising-gala-2026";
+const ZEFFY_DONATE_URL =
   "https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-10031";
 
 const EventTickets = () => {
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(75);
-  const [customAmount, setCustomAmount] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
@@ -57,24 +57,7 @@ const EventTickets = () => {
     formState: { errors },
   } = useForm<GalaFormData>({ resolver: zodResolver(galaSchema) });
 
-  const donationAmount =
-    customAmount ? parseFloat(customAmount) : (selectedAmount ?? 0);
-
-  const handleAmountClick = (amount: number) => {
-    setSelectedAmount(amount);
-    setCustomAmount("");
-  };
-
-  const handleCustomAmount = (value: string) => {
-    setCustomAmount(value);
-    setSelectedAmount(null);
-  };
-
   const onSubmit = async (data: GalaFormData) => {
-    if (!donationAmount || donationAmount <= 0) {
-      toast.error("Please choose or enter a donation amount.");
-      return;
-    }
     setIsSubmitting(true);
     await new Promise((r) => setTimeout(r, 800));
     const params = new URLSearchParams({
@@ -82,15 +65,14 @@ const EventTickets = () => {
       lastName: data.lastName,
       email: data.email,
       phone: data.phone,
-      amount: donationAmount.toString(),
       campaign: "Hearts & Hope Fundraising Gala 2026",
     });
     toast.success(
-      `Redirecting to secure donation of $${donationAmount.toFixed(2)} — thank you!`,
+      `Redirecting to secure ticket purchase — thank you!`,
       { duration: 4000 }
     );
     window.open(
-      `${ZEFFY_BASE_URL}?${params.toString()}`,
+      `${ZEFFY_TICKET_URL}?${params.toString()}`,
       "_blank",
       "noopener,noreferrer"
     );
@@ -144,9 +126,8 @@ const EventTickets = () => {
             </h1>
 
             <p className="text-muted-foreground text-lg max-w-2xl mb-10 leading-relaxed">
-              Your donation is your seat at the table. Join us for a
-              transformative evening — every contribution directly supports young
-              adults transitioning from foster care to independent living.
+              Join us for a transformative evening supporting young adults
+              transitioning from foster care to independent living.
             </p>
 
             {/* event pills */}
@@ -177,8 +158,10 @@ const EventTickets = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
           <div className="grid lg:grid-cols-5 gap-12 items-start">
 
-          {/* ── Left: donation form ── */}
-          <div className="lg:col-span-3">
+          {/* ── Left: ticket form + donate section ── */}
+          <div className="lg:col-span-3 space-y-8">
+
+            {/* ── Gala – Buy Tickets ── */}
             <div className="bg-card rounded-3xl shadow-card border border-border overflow-hidden">
               {/* form header */}
               <div
@@ -196,18 +179,17 @@ const EventTickets = () => {
                         "linear-gradient(135deg, hsl(12 76% 61%), hsl(38 92% 50%))",
                     }}
                   >
-                    <Heart className="w-5 h-5 text-white" />
+                    <Ticket className="w-5 h-5 text-white" />
                   </div>
                   <h2
                     className="text-2xl font-bold text-foreground"
                     style={{ fontFamily: "'Playfair Display', serif" }}
                   >
-                    Donate &amp; Reserve Your Seat
+                    Gala – Buy Tickets
                   </h2>
                 </div>
                 <p className="text-muted-foreground">
-                  Choose your donation amount below — your contribution is your
-                  support for the Gala and our mission.
+                  Fill in your info below to reserve your seat at the Hearts &amp; Hope Fundraising Gala.
                 </p>
               </div>
 
@@ -216,68 +198,6 @@ const EventTickets = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="p-8 space-y-6"
               >
-                {/* Donation amount */}
-                <div className="space-y-3">
-                  <Label className="font-semibold text-base flex items-center gap-1.5">
-                    <Heart className="w-3.5 h-3.5 text-primary" />
-                    Choose Your Donation Amount
-                  </Label>
-
-                  {/* Preset amounts */}
-                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-                    {SUGGESTED_AMOUNTS.map((amount) => (
-                      <button
-                        key={amount}
-                        type="button"
-                        onClick={() => handleAmountClick(amount)}
-                        className={`py-3 rounded-xl border-2 font-semibold text-sm transition-all duration-200 ${
-                          selectedAmount === amount
-                            ? "border-primary bg-primary/10 text-primary"
-                            : "border-border bg-background hover:border-primary/50 text-foreground"
-                        }`}
-                      >
-                        ${amount}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Custom amount */}
-                  <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground font-medium">
-                      $
-                    </span>
-                    <input
-                      type="number"
-                      min="1"
-                      value={customAmount}
-                      onChange={(e) => handleCustomAmount(e.target.value)}
-                      placeholder="Or enter a custom amount"
-                      className="w-full pl-8 pr-4 py-3 rounded-xl border-2 border-border bg-background focus:border-primary focus:outline-none transition-colors text-sm"
-                    />
-                  </div>
-
-                  {/* Live total */}
-                  {donationAmount > 0 && (
-                    <div
-                      className="flex items-center justify-between rounded-xl px-5 py-3"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, hsl(12 76% 61% / 0.08), hsl(38 92% 50% / 0.06))",
-                      }}
-                    >
-                      <span className="text-sm text-muted-foreground font-medium">
-                        Your donation total
-                      </span>
-                      <span className="text-2xl font-bold text-foreground">
-                        ${donationAmount.toFixed(2)}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Divider */}
-                <div className="border-t border-border" />
-
                 {/* Name row */}
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -416,10 +336,10 @@ const EventTickets = () => {
 
                 {/* CTA */}
                 <Button
-                  id="donate-gala-btn"
+                  id="buy-gala-ticket-btn"
                   type="submit"
                   size="lg"
-                  disabled={isSubmitting || donationAmount <= 0}
+                  disabled={isSubmitting}
                   className="w-full gap-2 rounded-xl text-base font-semibold py-6"
                   style={{
                     background:
@@ -433,48 +353,69 @@ const EventTickets = () => {
                     </>
                   ) : (
                     <>
-                      <Heart className="w-5 h-5 fill-white/30" />
-                      Donate
-                      {donationAmount > 0
-                        ? ` $${donationAmount.toFixed(2)}`
-                        : ""}{" "}
-                      &amp; Reserve My Seat
+                      <Ticket className="w-5 h-5" />
+                      Buy Gala Tickets
                       <ArrowRight className="w-4 h-4" />
                     </>
                   )}
                 </Button>
 
                 <p className="text-xs text-muted-foreground text-center">
-                  🔒 Secure payment powered by{" "}
-                  <strong>Zeffy</strong> — 100% of your donation goes directly
-                  to our mission.
+                  🔒 Secure checkout powered by{" "}
+                  <strong>Zeffy</strong> — 100% of proceeds support our mission.
                 </p>
-
-                {/* Donate alternative */}
-                <div className="relative flex items-center gap-3">
-                  <div className="flex-1 border-t border-border" />
-                  <span className="text-xs text-muted-foreground font-medium uppercase tracking-widest">
-                    or
-                  </span>
-                  <div className="flex-1 border-t border-border" />
-                </div>
-
-                <div className="text-center space-y-2">
-                  <p className="text-sm text-muted-foreground">
-                    Not attending but still want to help?
-                  </p>
-                  <button
-                    type="button"
-                    id="goto-donate-btn"
-                    onClick={() => navigate("/#donate")}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 underline underline-offset-4 transition-colors"
-                  >
-                    <Heart className="w-4 h-4 fill-current" />
-                    Make a Donation Instead
-                  </button>
-                </div>
               </form>
             </div>
+
+            {/* ── Make a Donation ── */}
+            <div
+              className="rounded-3xl border border-border overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(12 76% 61% / 0.06), hsl(38 92% 50% / 0.04))",
+              }}
+            >
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, hsl(12 76% 61%), hsl(38 92% 50%))",
+                    }}
+                  >
+                    <Heart className="w-5 h-5 text-white" />
+                  </div>
+                  <h2
+                    className="text-2xl font-bold text-foreground"
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                  >
+                    Make a Donation
+                  </h2>
+                </div>
+                <p className="text-muted-foreground mb-6">
+                  Not able to attend but still want to make an impact? Every
+                  donation goes directly toward supporting young adults aging out
+                  of foster care — giving them a home, dignity, and hope.
+                </p>
+                <Button
+                  id="make-donation-btn"
+                  size="lg"
+                  onClick={() => navigate("/donate")}
+                  className="w-full gap-2 rounded-xl text-base font-semibold py-6"
+                  variant="outline"
+                >
+                  <Heart className="w-5 h-5 text-primary" />
+                  Donate Now
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+                <p className="text-xs text-muted-foreground text-center mt-3">
+                  🔒 Secure donation via <strong>Zeffy</strong> — 100% goes to
+                  our mission.
+                </p>
+              </div>
+            </div>
+
           </div>
 
           {/* ── Right: sidebar ── */}
@@ -594,7 +535,7 @@ const EventTickets = () => {
               <Heart className="w-6 h-6 text-primary mb-3" />
               <p className="text-sm text-muted-foreground leading-relaxed">
                 <strong className="text-foreground">
-                  Your donation is your ticket.
+                  Every seat filled is a life changed.
                 </strong>{" "}
                 Every dollar goes directly toward providing essential household
                 furnishings to young adults aging out of the foster care system
