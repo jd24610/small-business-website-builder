@@ -12,6 +12,7 @@ import {
   Star,
   ArrowRight,
   Heart,
+  Ticket,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -113,7 +114,7 @@ const EventBanner = () => {
                     "linear-gradient(135deg, hsl(12 76% 61%), hsl(38 92% 50%))",
                 }}
               >
-                <Heart className="w-5 h-5" />
+                <Ticket className="w-5 h-5" />
                 Buy Tickets
                 <ArrowRight className="w-4 h-4" />
               </Button>
@@ -144,11 +145,7 @@ const EventBanner = () => {
               <div className="p-8 space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-white/60 text-xs uppercase tracking-widest mb-1">
-                      Gala
-                    </p>
-                    <p className="text-3xl font-bold text-white">Any Amount</p>
-                    <p className="text-white/50 text-sm">your donation = your seat</p>
+                    <p className="text-2xl font-bold text-white" style={{ fontFamily: "'Playfair Display', serif" }}>Gala</p>
                   </div>
                   <div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center"

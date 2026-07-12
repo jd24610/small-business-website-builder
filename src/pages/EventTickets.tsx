@@ -250,8 +250,36 @@ const EventTickets = () => {
                       "linear-gradient(90deg, hsl(12 76% 61%), hsl(38 92% 50%), hsl(12 76% 61%))",
                   }}
                 />
-
                 <div className="p-7 space-y-5">
+                  <div>
+                    <p className="text-white/60 text-xs uppercase tracking-widest mb-2">
+                      Your Donation Impact
+                    </p>
+                    <div className="space-y-3">
+                      {[
+                        { amount: "$50", impact: "Home essentials (dishes, cutlery, shower curtain)" },
+                        { amount: "$75", impact: "Personal care & comfort items (comforter, sheets)" },
+                        { amount: "$100", impact: "Kitchen & bedroom basics (alarm clock, towels)" },
+                        { amount: "$250", impact: "Furniture support (dresser, nightstand, table)" },
+                        { amount: "$500", impact: "Furnish a full home (bed, sofa, or loveseat)" },
+                      ].map(({ amount, impact }) => (
+                        <div key={amount} className="flex gap-3">
+                          <span className="text-amber-400 font-bold text-sm w-12 shrink-0">
+                            {amount}
+                          </span>
+                          <p className="text-white/70 text-sm">{impact}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* tear line */}
+                  <div className="relative flex items-center my-4">
+                    <div className="absolute -left-7 w-5 h-5 rounded-full bg-background" />
+                    <div className="flex-1 border-t-2 border-dashed border-white/20" />
+                    <div className="absolute -right-7 w-5 h-5 rounded-full bg-background" />
+                  </div>
+
                   <div className="space-y-3">
                     {[
                       { icon: Calendar, label: "Date", value: "Saturday, October 10, 2026" },
