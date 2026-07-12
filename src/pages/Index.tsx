@@ -166,7 +166,6 @@ const EventBanner = () => {
                     "Inspiring foster care alumni stories",
                     "Live entertainment",
                     "Silent auction",
-                    "Tax-deductible contribution",
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-2">
                       <span className="text-amber-400">✦</span>

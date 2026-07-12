@@ -145,7 +145,6 @@ const EventTickets = () => {
                         "Live entertainment",
                         "Silent auction benefiting our mission",
                         "Networking with community leaders",
-                        "Tax-deductible charitable contribution",
                       ].map((item) => (
                         <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
                           <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
