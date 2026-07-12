@@ -108,22 +108,28 @@ const EventTickets = () => {
                       "linear-gradient(135deg, hsl(12 76% 61% / 0.08), hsl(38 92% 50% / 0.06))",
                   }}
                 >
-                  <div className="flex items-center gap-3 mb-2">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, hsl(12 76% 61%), hsl(38 92% 50%))",
-                      }}
-                    >
-                      <Ticket className="w-5 h-5 text-white" />
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-2">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, hsl(12 76% 61%), hsl(38 92% 50%))",
+                        }}
+                      >
+                        <Ticket className="w-5 h-5 text-white" />
+                      </div>
+                      <h2
+                        className="text-2xl font-bold text-foreground"
+                        style={{ fontFamily: "'Playfair Display', serif" }}
+                      >
+                        Gala – Buy Tickets
+                      </h2>
                     </div>
-                    <h2
-                      className="text-2xl font-bold text-foreground"
-                      style={{ fontFamily: "'Playfair Display', serif" }}
-                    >
-                      Gala – Buy Tickets
-                    </h2>
+                    <div className="bg-primary/10 border border-primary/20 rounded-xl px-4 py-1.5 inline-flex items-baseline gap-1 self-start sm:self-auto">
+                      <span className="text-xl font-extrabold text-primary">$75</span>
+                      <span className="text-xs text-muted-foreground font-medium">/ ticket</span>
+                    </div>
                   </div>
                   <p className="text-muted-foreground">
                     Secure your seat at the Hearts &amp; Hope Fundraising Gala
