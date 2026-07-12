@@ -16,7 +16,7 @@ describe("Header Component", () => {
     expect(screen.getByText("Our Mission")).toBeInTheDocument();
     expect(screen.getByText("Our Impact")).toBeInTheDocument();
     expect(screen.getByText("Contact")).toBeInTheDocument();
-    expect(screen.getByText("Buy Tickets")).toBeInTheDocument();
+    expect(screen.getByText("Gala - Buy Tickets")).toBeInTheDocument();
     expect(screen.getByText("Donate")).toBeInTheDocument();
   });
 
