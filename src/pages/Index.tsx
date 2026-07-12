@@ -114,7 +114,7 @@ const EventBanner = () => {
                 }}
               >
                 <Heart className="w-5 h-5" />
-                Donate &amp; Attend the Gala
+                Buy Tickets
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
@@ -145,7 +145,7 @@ const EventBanner = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-white/60 text-xs uppercase tracking-widest mb-1">
-                      Donate to Attend
+                      Gala
                     </p>
                     <p className="text-3xl font-bold text-white">Any Amount</p>
                     <p className="text-white/50 text-sm">your donation = your seat</p>
