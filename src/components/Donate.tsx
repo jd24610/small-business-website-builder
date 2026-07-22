@@ -143,6 +143,10 @@ const Donate = () => {
                     </a>
                   </div>
 
+                  <div className="mt-2 text-center text-sm text-muted-foreground">
+                    Or Zelle to: <span className="font-medium text-foreground select-all">TFTHEARTS@gmail.com</span>
+                  </div>
+
                   <DialogFooter className="mt-4">
                     <DialogClose asChild>
                       <Button variant="outline">Close</Button>
