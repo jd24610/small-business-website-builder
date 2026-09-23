@@ -47,10 +47,9 @@ const EventTickets = () => {
 
           <div className="relative z-10 px-8 py-12 md:py-16 flex flex-col items-center text-center">
             {/* badge */}
-            <div className="inline-flex items-center gap-2 bg-white/60 border border-black/5 rounded-full px-4 py-1.5 mb-6 shadow-sm">
-              <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-              <span className="text-foreground/80 text-sm font-semibold tracking-wide uppercase">
-                An Evening of Fine Dining &amp; Purpose
+            <div className="inline-flex items-center gap-2 bg-red-50 border border-red-100 rounded-full px-4 py-1.5 mb-6 shadow-sm">
+              <span className="text-red-600 text-sm font-bold tracking-wide uppercase">
+                EVENT CANCELLED
               </span>
             </div>
 
@@ -163,21 +162,12 @@ const EventTickets = () => {
                   <div className="border-t border-border" />
 
                   {/* CTA — direct Zeffy link */}
-                  <a
+                  <div
                     id="buy-gala-ticket-btn"
-                    href={ZEFFY_TICKET_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full rounded-xl text-base font-semibold py-4 text-white transition-opacity hover:opacity-90"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, hsl(12 76% 61%), hsl(15 55% 50%))",
-                    }}
+                    className="flex items-center justify-center gap-2 w-full rounded-xl text-base font-semibold py-4 bg-gray-300 text-gray-500 cursor-not-allowed"
                   >
-                    <Ticket className="w-5 h-5" />
-                    Buy Gala Tickets
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+                    Event Cancelled
+                  </div>
 
                   <p className="text-xs text-muted-foreground text-center">
                     🔒 Secure checkout powered by{" "}

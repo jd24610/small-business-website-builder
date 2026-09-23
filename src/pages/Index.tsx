@@ -55,10 +55,9 @@ const EventBanner = () => {
       <div className="relative z-10">
         {/* Badge */}
         <div className="flex justify-center mb-6">
-          <div className="inline-flex items-center gap-2 bg-white/60 border border-black/5 shadow-sm rounded-full px-4 py-1.5">
-            <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-            <span className="text-foreground/80 text-sm font-semibold tracking-wide uppercase">
-              Upcoming Fundraising Event
+          <div className="inline-flex items-center gap-2 bg-red-50 border border-red-100 shadow-sm rounded-full px-4 py-1.5">
+            <span className="text-red-600 text-sm font-bold tracking-wide uppercase">
+              EVENT CANCELLED
             </span>
           </div>
         </div>
@@ -107,16 +106,10 @@ const EventBanner = () => {
               <Button
                 id="homepage-buy-tickets-btn"
                 size="lg"
-                onClick={() => navigate("/event-tickets")}
-                className="gap-2 rounded-xl px-8 text-base font-semibold"
-                style={{
-                  background:
-                    "linear-gradient(135deg, hsl(12 76% 61%), hsl(38 92% 50%))",
-                }}
+                disabled
+                className="gap-2 rounded-xl px-8 text-base font-semibold bg-gray-300 text-gray-500 cursor-not-allowed"
               >
-                <Ticket className="w-5 h-5" />
-                Buy Tickets
-                <ArrowRight className="w-4 h-4" />
+                Event Cancelled
               </Button>
             </div>
 
