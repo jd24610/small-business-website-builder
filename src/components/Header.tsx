@@ -15,7 +15,6 @@ const Header = () => {
     { href: "/#mission", label: "Our Mission" },
     { href: "/impact", label: "Our Impact" },
     { href: "/#contact", label: "Contact" },
-    { href: "/event-tickets", label: "Gala - Buy Tickets" },
     { href: "/donate", label: "Donate" },
   ];
 

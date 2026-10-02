@@ -211,7 +211,6 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <EventBanner />
         <About />
         <Contact />
       </main>
