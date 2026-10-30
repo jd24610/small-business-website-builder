@@ -1,16 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  DialogClose,
-} from "@/components/ui/dialog";
-import { Heart, Check } from "lucide-react";
+import { Heart, Check, ExternalLink } from "lucide-react";
+
+const AUTOBOOKS_URL = "https://app.autobooks.co/pay/transition-from-the-hearts-a-nj";
 
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(50);
@@ -94,66 +86,23 @@ const Donate = () => {
                 </div>
               </div>
 
-              {/* Donate Button (opens payment options) */}
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="donate" size="xl" className="w-full">
-                    <Heart className="w-5 h-5 mr-2 fill-current" />
-                    Donate ${customAmount || selectedAmount || 0}
-                  </Button>
-                </DialogTrigger>
+              {/* Donate Button */}
+              <a
+                href={AUTOBOOKS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full"
+              >
+                <Button variant="donate" size="xl" className="w-full">
+                  <Heart className="w-5 h-5 mr-2 fill-current" />
+                  Donate ${customAmount || selectedAmount || 0}
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </Button>
+              </a>
 
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Choose a payment method</DialogTitle>
-                    <DialogDescription>
-                      Select one of the options below to complete your donation of ${customAmount || selectedAmount || 0}.
-                    </DialogDescription>
-                  </DialogHeader>
-
-                  <div className="mt-4 grid gap-3">
-                    <a
-                      href={`https://www.paypal.me/TFTHorg/${customAmount || selectedAmount || ""}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg border border-border bg-background hover:border-primary transition-colors text-sm font-medium"
-                      aria-label="Donate with PayPal (opens in new tab)"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                        <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" />
-                        <path d="M6 9h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                      </svg>
-                      PayPal
-                    </a>
-
-
-                    <a
-                      href="https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-10031"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-3 w-full px-4 py-3 rounded-lg border-2 border-primary bg-primary/5 hover:bg-primary/10 transition-colors text-sm font-medium text-primary"
-                      aria-label="Donate with Credit or Debit Card via Zeffy (opens in new tab)"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                        <rect x="2" y="5" width="20" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" />
-                        <path d="M2 10h20" stroke="currentColor" strokeWidth="1.5" />
-                        <path d="M6 15h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                      </svg>
-                      Credit / Debit Card
-                    </a>
-                  </div>
-
-                  <div className="mt-2 text-center text-sm text-muted-foreground">
-                    Or Zelle to: <span className="font-medium text-foreground select-all">TFTHEARTS@gmail.com</span>
-                  </div>
-
-                  <DialogFooter className="mt-4">
-                    <DialogClose asChild>
-                      <Button variant="outline">Close</Button>
-                    </DialogClose>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
+              <p className="text-xs text-muted-foreground text-center mt-3">
+                🔒 Secure payment powered by <strong>Autobooks</strong>
+              </p>
             </div>
 
             {/* Impact Info */}
