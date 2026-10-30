@@ -12,6 +12,13 @@ const Hero = () => {
     }
   };
 
+  const scrollToDonate = () => {
+    const element = document.querySelector("#donate");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
 
   return (
     <>
@@ -50,6 +57,11 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <Button variant="donate" size="xl" onClick={scrollToDonate}>
+                <Heart className="w-5 h-5 mr-2 fill-current" />
+                Donate Now
+              </Button>
+
               <Button variant="default" size="xl" onClick={() => setIsHelpModalOpen(true)}>
                 Get Help
               </Button>

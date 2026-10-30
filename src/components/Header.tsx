@@ -14,8 +14,8 @@ const Header = () => {
     { href: "/#about", label: "About Us" },
     { href: "/#mission", label: "Our Mission" },
     { href: "/impact", label: "Our Impact" },
+    { href: "/#donate", label: "Donate" },
     { href: "/#contact", label: "Contact" },
-    { href: "/donate", label: "Donate" },
   ];
 
   const handleNavigation = (href: string) => {
