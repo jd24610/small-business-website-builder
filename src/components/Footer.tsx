@@ -60,8 +60,6 @@ const Footer = () => {
             <div className="md:col-span-1">
               <h3 className="font-semibold mb-4">Contact Us</h3>
               <div className="text-sm text-background/70 space-y-2">
-                <p>135 South Blackhorse Pike</p>
-                <p>P.O Box #68</p>
                 <p>Williamstown, NJ 08094</p>
                 <p className="mt-3">Email: info@transitionfromthehearts.org</p>
                 <p>Phone: +1 (856)668-0777</p>

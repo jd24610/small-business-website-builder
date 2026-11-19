@@ -51,7 +51,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Our Address",
-      details: ["135 South Blackhorse Pike", "P.O Box #68", "Williamstown, New Jersey 08094"],
+      details: ["Williamstown, NJ 08094"],
     },
     {
       icon: Phone,
@@ -169,7 +169,7 @@ const Contact = () => {
 
               {/* Interactive Map */}
               <a
-                href="https://www.google.com/maps/search/?api=1&query=135+South+Blackhorse+Pike+Williamstown+New+Jersey+08094"
+                href="https://www.google.com/maps/search/?api=1&query=Williamstown+NJ+08094"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-2xl overflow-hidden bg-secondary h-48 hover:bg-secondary/80 transition-colors group cursor-pointer"
@@ -181,7 +181,7 @@ const Contact = () => {
                       Click to view on Google Maps
                     </p>
                     <p className="text-muted-foreground text-xs mt-1">
-                      135 South Blackhorse Pike, Williamstown, NJ
+                      Williamstown, NJ 08094
                     </p>
                   </div>
                 </div>
