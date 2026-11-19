@@ -5,15 +5,15 @@ import { Heart, Check, ExternalLink } from "lucide-react";
 const AUTOBOOKS_URL = "https://app.autobooks.co/pay/transition-from-the-hearts-a-nj";
 
 const Donate = () => {
-  const [selectedAmount, setSelectedAmount] = useState<number | null>(50);
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(100);
   const [customAmount, setCustomAmount] = useState("");
 
-  const amounts = [50, 100, 250, 500];
+  const amounts = [100, 250, 300, 500];
 
   const impactItems = [
-    { amount: 50, impact: "Home essentials for a young adult (e.g., dishes, cutlery, shower curtain)" },
-    { amount: 100, impact: "Supports personal care and comfort items (e.g., comforter, sheets, alarm clock)" },
+    { amount: 100, impact: "Home essentials and personal care items (e.g., comforter, sheets, dishes, alarm clock)" },
     { amount: 250, impact: "Support for home supplies (e.g., dresser, nightstand, kitchen table)" },
+    { amount: 300, impact: "Support for key room furnishings and appliances (e.g., desk, microwave, dining set)" },
     { amount: 500, impact: "Support to furnish a young adult's home (e.g., bed, sofa, or loveseat)" },
   ];
 

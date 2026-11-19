@@ -13,14 +13,14 @@ describe("Donate Component", () => {
     render(<Donate />);
     
     // Check preset buttons
-    const button50 = screen.getByRole("button", { name: "$50" });
     const button100 = screen.getByRole("button", { name: "$100" });
-    expect(button50).toBeInTheDocument();
+    const button250 = screen.getByRole("button", { name: "$250" });
     expect(button100).toBeInTheDocument();
+    expect(button250).toBeInTheDocument();
 
-    // Click $100 preset and verify
-    fireEvent.click(button100);
-    expect(screen.getByRole("button", { name: /Donate \$100/i })).toBeInTheDocument();
+    // Click $250 preset and verify
+    fireEvent.click(button250);
+    expect(screen.getByRole("button", { name: /Donate \$250/i })).toBeInTheDocument();
 
     // Test custom input
     const input = screen.getByPlaceholderText("Enter amount");
