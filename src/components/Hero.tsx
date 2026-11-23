@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Heart, ArrowDown } from "lucide-react";
+import { Heart, ArrowDown, Target } from "lucide-react";
 import GetHelpModal from "@/components/GetHelpModal";
 
 const Hero = () => {
@@ -36,10 +36,13 @@ const Hero = () => {
         <div className="container mx-auto px-4 pt-24 pb-16 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-full mb-8 animate-fade-in">
-              <Heart className="w-4 h-4 text-primary fill-current" />
-              <span className="text-sm font-medium text-secondary-foreground">
-                Supporting Young Adults Since 2024
+            <div
+              onClick={scrollToDonate}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/95 hover:bg-secondary rounded-full mb-8 animate-fade-in cursor-pointer transition-transform hover:scale-105"
+            >
+              <Target className="w-4 h-4 text-primary" />
+              <span className="text-sm font-semibold text-secondary-foreground">
+                $250,000 Fundraising Campaign · Support Young Adults
               </span>
             </div>
 
@@ -59,7 +62,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style={{ animationDelay: "0.3s" }}>
               <Button variant="donate" size="xl" onClick={scrollToDonate}>
                 <Heart className="w-5 h-5 mr-2 fill-current" />
-                Donate Now
+                Donate to $250K Goal
               </Button>
 
               <Button variant="default" size="xl" onClick={() => setIsHelpModalOpen(true)}>
@@ -74,16 +77,16 @@ const Hero = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 mt-16 max-w-xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
               <div className="text-center">
-                <div className="font-display text-3xl md:text-4xl font-bold text-primary">2000+</div>
-                <div className="text-sm text-white/70 mt-1">Children in Needs Of Support (per year)</div>
+                <div className="font-display text-3xl md:text-4xl font-bold text-primary">$250K</div>
+                <div className="text-sm text-white/70 mt-1">Fundraising Goal</div>
               </div>
               <div className="text-center">
-                <div className="font-display text-3xl md:text-4xl font-bold text-primary">2</div>
-                <div className="text-sm text-white/70 mt-1">Years of Care</div>
+                <div className="font-display text-3xl md:text-4xl font-bold text-primary">2000+</div>
+                <div className="text-sm text-white/70 mt-1">Youth in Need of Support</div>
               </div>
               <div className="text-center">
                 <div className="font-display text-3xl md:text-4xl font-bold text-primary">100%</div>
-                <div className="text-sm text-white/70 mt-1">Heart &amp; Soul</div>
+                <div className="text-sm text-white/70 mt-1">Direct to Mission</div>
               </div>
             </div>
           </div>

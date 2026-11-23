@@ -25,15 +25,15 @@ const Impact = () => {
                             Help Us Grow Our Impact
                         </h3>
                         <p className="text-muted-foreground max-w-xl mx-auto mb-6">
-                            With your support, we can reach even more young adults who need guidance,
-                            resources, and a caring community to help them thrive.
+                            Join our $250,000 community fundraising campaign. With your support, we can reach even more young adults who need guidance,
+                            furnishings, and a caring community to help them thrive.
                         </p>
                         <a
-                            href="/#contact"
+                            href="/#donate"
                             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:shadow-warm transition-all hover:-translate-y-0.5"
                         >
                             <Heart className="w-5 h-5" />
-                            Support Our Mission
+                            Support the $250K Fundraiser
                         </a>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Heart, Check, ExternalLink } from "lucide-react";
+import { Heart, Check, ExternalLink, Target, TrendingUp, ShieldCheck, Sparkles } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
 
 const AUTOBOOKS_URL = "https://app.autobooks.co/pay/transition-from-the-hearts-a-nj";
 
@@ -42,6 +43,89 @@ const Donate = () => {
               Your generosity helps us continue supporting young adults through their
               most challenging transitions. Every contribution makes a difference.
             </p>
+          </div>
+
+          {/* $250,000 Fundraising Campaign Card */}
+          <div className="bg-card rounded-3xl p-8 md:p-10 shadow-soft border-2 border-primary/20 mb-12 relative overflow-hidden">
+            {/* Background decorative glow */}
+            <div
+              aria-hidden="true"
+              className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-primary/10 blur-3xl pointer-events-none"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-accent/10 blur-3xl pointer-events-none"
+            />
+
+            <div className="relative z-10">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider mb-3">
+                    <Target className="w-3.5 h-3.5" />
+                    2026 Community Fundraiser
+                  </div>
+                  <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground">
+                    $250,000 Fundraising Goal
+                  </h3>
+                  <p className="text-muted-foreground text-base mt-2 max-w-2xl leading-relaxed">
+                    Join our mission to raise <strong>$250,000</strong> to provide essential furnishings, home starter packages, and life-changing transition support for young adults aging out of foster care.
+                  </p>
+                </div>
+
+                <div className="bg-background/80 backdrop-blur-sm border border-border rounded-2xl p-6 text-center lg:text-right shrink-0">
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground font-semibold mb-1">
+                    Campaign Target
+                  </div>
+                  <div className="font-display text-3xl md:text-5xl font-extrabold text-primary">
+                    $250,000
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-1 flex items-center justify-center lg:justify-end gap-1">
+                    <ShieldCheck className="w-3.5 h-3.5 text-primary" />
+                    Direct Account Transfer
+                  </div>
+                </div>
+              </div>
+
+              {/* Progress Tracker */}
+              <div className="space-y-3 mb-6">
+                <div className="flex justify-between items-center text-sm font-medium">
+                  <span className="text-foreground flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-primary" />
+                    Campaign Progress
+                  </span>
+                  <span className="text-primary font-bold">Goal: $250,000</span>
+                </div>
+                <Progress value={15} className="h-3.5 bg-secondary" />
+                <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground pt-1">
+                  <span>Every dollar directly impacts young adults in New Jersey</span>
+                  <span className="font-medium text-foreground">100% of proceeds go directly to our account</span>
+                </div>
+              </div>
+
+              {/* Trust & Direct to Account Note */}
+              <div className="bg-secondary/60 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-foreground">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-5 h-5 text-primary" />
+                  </div>
+                  <p className="text-xs md:text-sm text-muted-foreground">
+                    Donations go <strong className="text-foreground">directly into the official Transition From The Hearts account</strong> via Autobooks secure payment processing.
+                  </p>
+                </div>
+                <a
+                  href={AUTOBOOKS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0"
+                >
+                  <Button variant="default" size="sm" className="gap-1.5 font-semibold">
+                    <Heart className="w-4 h-4 fill-current" />
+                    Give to the $250K Goal
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </Button>
+                </a>
+              </div>
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -101,7 +185,7 @@ const Donate = () => {
               </a>
 
               <p className="text-xs text-muted-foreground text-center mt-3">
-                🔒 Secure payment powered by <strong>Autobooks</strong>
+                🔒 Secure payment powered by <strong>Autobooks</strong> · Funds deposit directly into our account
               </p>
             </div>
 
